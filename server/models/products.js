@@ -6,8 +6,8 @@ const productSchema = new Schema({
     description: String,
     attributes: {
       size: [String],
-      color: [String],
-    }
+      color: [{name: String, image: { url: String, alt: String }}],
+    },
     category: [String],
     brand: String,
     price: Number,
@@ -32,4 +32,4 @@ const saveNewProduct = async (product) => {
   return await newProduct.save();
 }
 
-export { loadAllProducts, loadProductById, saveNewProduct};
+module.exports = { loadAllProducts, loadProductById, saveNewProduct};
