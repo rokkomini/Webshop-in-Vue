@@ -12,12 +12,12 @@ const PORT = process.env.PORT || 5000;
 const MONGO_URL = process.env.MONGODB_URL || 'mongodb://localhost:27017/webshop';
 
 //Routes
-app.use('/', productRouter);
+app.use('/product', productRouter);
 
 app.listen(PORT, async (req, res) => {
   try {
     setupMongoDb(MONGO_URL);
-    console.log(`Example app listening on port ${PORT}!`);
+    console.log(`App listening on port ${PORT}!`);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Failed connecting to MongoDB');
