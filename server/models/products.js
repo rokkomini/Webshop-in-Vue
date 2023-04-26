@@ -5,9 +5,9 @@ var slugify = require('slugify');
 const productSchema = new Schema({
     name: { type: String, required: true, unique: true },
     description: String,
-    attributes: {
+    options: {
       size: [String],
-      color: [{name: String, image: { url: String, alt: String }}],
+      color: [{name: String, colorCode: String, image: { url: String, alt: String }}],
     },
     category: [String],
     brand: String,
