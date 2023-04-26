@@ -6,8 +6,22 @@
     </div>
     <div>Sökruta?</div>
     <div>En logga?</div>
+    <div>
+      <button @click="$event => openCart()">Öppna varukorg</button>
+    </div>
   </section>
 </template>
+
+<script>
+export default {
+  name: 'TopHeader',
+  methods: {
+    openCart() {
+      console.log('open cart');
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .top-header-wrapper {
