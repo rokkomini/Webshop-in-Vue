@@ -3,7 +3,7 @@
     <StartHeroVue />
     <p v-if="loading">Loading posts...</p>
     <p v-if="error">{{ error.message }}</p>
-    <div v-if="products">
+    <div v-if="products" class="flex">
       <ProductList :products="products" />
     </div>
   </div>
