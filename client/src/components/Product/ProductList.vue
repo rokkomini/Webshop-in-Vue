@@ -1,10 +1,7 @@
 <template>
-  <div>
-    Product List
     <div v-for="product in products" :key="product.id">
-      <ProductCard @add-to-cart="addToCart" :product="product"/>
+      <ProductCard @add-to-cart="addToCart" @update-option="updateOption" :product="product"/>
     </div>
-  </div>
 </template>
 
 <script>
@@ -23,6 +20,9 @@ export default {
   methods: {
     addToCart(product) {
       console.log('clicked to buy product: ', product);
+    },
+    updateOption(option) {
+      console.log('clicked to update option: ', option);
     }
   }
 }
