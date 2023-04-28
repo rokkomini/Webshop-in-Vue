@@ -11,6 +11,7 @@
       <div class="product-info">
         <p>Name: {{ product.name }}</p>
         <p>Brand: {{ product.brand }}</p>
+        <p>Price: {{ product.price }} kr</p>
 
           <select v-model="selectedSize" v-if="product.options.size.length > 0">
             <option v-for="option in product.options.size" :value="option.value" v-bind:key="option.id" :option="option">
@@ -77,7 +78,7 @@ export default {
   }
 
   .product-info {
-    padding: 10px;
+    padding: 15px;
   }
 }
 </style>
