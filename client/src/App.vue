@@ -2,11 +2,15 @@
 import { RouterLink, RouterView } from 'vue-router'
 import TopHeader from './components/Header/TopHeader.vue';
 import Footer from './components/Footer.vue';
+import Cart from './components/Cart.vue';
 </script>
 
 <template>
   <div>
-    <TopHeader />
+    <div v-show="showCart">
+      <Cart/>
+    </div>
+    <TopHeader @toggle-cart="toggleCart"/>
     <nav>
       <RouterLink to="/">Home</RouterLink>
     </nav>
@@ -14,3 +18,20 @@ import Footer from './components/Footer.vue';
       <Footer />
   </div>
 </template>
+
+<script>
+
+export default { 
+  data() {
+    return {
+      showCart: false,
+    }
+  },
+  methods: {
+    toggleCart() {
+      this.showCart = !this.showCart;
+      console.log('click toggle cart', this.showCart);
+    }
+  },
+}
+</script>

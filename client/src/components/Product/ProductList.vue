@@ -1,6 +1,6 @@
 <template>
     <div v-for="product in products" :key="product.id">
-      <ProductCard @add-to-cart="addToCart" @update-option="updateOption" :product="product"/>
+      <ProductCard @add-to-cart="$emit('add-to-cart', product)" :product="product"/>
     </div>
 </template>
 
@@ -21,9 +21,6 @@ export default {
     addToCart(product) {
       console.log('clicked to buy product: ', product);
     },
-    updateOption(option) {
-      console.log('clicked to update option: ', option);
-    }
   }
 }
 

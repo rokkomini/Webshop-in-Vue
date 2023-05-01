@@ -15,7 +15,8 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/vue-fontawesome": "^3.0.3",
-    "bootstrap": "^4.6.1",
+    "@popperjs/core": "^2.11.7",
+    "bootstrap": "^4.6.2",
     "bootstrap-vue": "^2.23.1",
     "pinia": "^2.0.32",
     "vue": "^3.2.47",
@@ -29,7 +30,7 @@
     "eslint": "^8.34.0",
     "eslint-plugin-vue": "^9.9.0",
     "prettier": "^2.8.4",
-    "sass": "^1.62.0",
+    "sass": "^1.62.1",
     "sass-loader": "^13.2.2",
     "vite": "^4.1.4"
   }

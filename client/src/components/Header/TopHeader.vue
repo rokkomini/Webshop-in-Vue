@@ -7,7 +7,7 @@
     <div>Sökruta?</div>
     <div>En logga?</div>
     <div>
-      <button @click="$event => openCart()">Öppna varukorg</button>
+      <button @click="$event => $emit('toggle-cart')">Öppna varukorg</button>
     </div>
   </section>
 </template>
@@ -15,11 +15,13 @@
 <script>
 export default {
   name: 'TopHeader',
-  methods: {
-    openCart() {
-      console.log('open cart');
-    }
-  }
+  // methods: {
+  //   toggleCart() {
+  //     console.log('open cart');
+  //   }
+  // },
+
+  emits: ['toggle-cart']
 }
 </script>
 
