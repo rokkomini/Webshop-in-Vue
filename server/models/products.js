@@ -29,6 +29,10 @@ const loadProductBySlug = async (slug) => {
   return await ProductModel.findOne({ slug: slug }).exec();
 }
 
+const loadProductById = async (id) => {
+  return await ProductModel.findOne({ _id: id }).exec();
+}
+
 const saveNewProduct = async (product) => { 
   const newProduct = new ProductModel(product);
   const slug = slugify(product.name, {replacement: '-', lower: true});
@@ -36,4 +40,4 @@ const saveNewProduct = async (product) => {
   return await newProduct.save();
 }
 
-module.exports = { loadAllProducts, loadProductBySlug, saveNewProduct };
+module.exports = { loadAllProducts, loadProductBySlug, loadProductById, saveNewProduct };

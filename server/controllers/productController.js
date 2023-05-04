@@ -1,4 +1,4 @@
-const {loadAllProducts, loadProductBySlug, saveNewProduct} = require('../models/products');
+const { loadAllProducts, loadProductBySlug, saveNewProduct } = require('../models/products');
 
 const saveProduct = async(product) => {
   await saveNewProduct(product);

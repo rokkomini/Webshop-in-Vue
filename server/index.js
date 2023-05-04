@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv').config();
 const productRouter = require('./routes/products');
+const cartRouter = require('./routes/cart');
 const { setupMongoDb } = require('./models/common');
 
 const app = express();
@@ -13,6 +14,7 @@ const MONGO_URL = process.env.MONGODB_URL || 'mongodb://localhost:27017/webshop'
 
 //Routes
 app.use('/product', productRouter);
+app.use('/cart', cartRouter);
 
 app.listen(PORT, async (req, res) => {
   try {
