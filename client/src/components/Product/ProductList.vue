@@ -1,7 +1,10 @@
 <template>
+  <div class="flex">
     <div v-for="product in products" :key="product.id">
-      <ProductCard @add-to-cart="$emit('add-to-cart', product)" :product="product"/>
+      <!-- <ProductCard :product="product" @add-to-task="$emit('add-to-cart', product.id, selectedOption)"/> -->
+      <ProductCard :product="product" @add-to-cart="'add-to-cart'"/>
     </div>
+  </div>
 </template>
 
 <script>
@@ -17,11 +20,17 @@ export default {
   components: {
     ProductCard
   },
-  methods: {
-    addToCart(product) {
-      console.log('clicked to buy product: ', product);
-    },
-  }
+  // data() {
+  //   return {
+  //     selectedOption: null,
+  //   }
+  // },
+  emits: ['add-to-cart']
+  // methods: {
+  //   addToCart(product, selectedOption) {
+  //     console.log('clicked to buy product: ', product, selectedOption);
+  //   },
+  // }
 }
 
 </script>

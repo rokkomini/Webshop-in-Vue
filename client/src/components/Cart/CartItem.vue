@@ -4,24 +4,18 @@
       <div class="flex item-info">
         <div><img src="../../assets/images/products/512355/138542-1-512355-003_pack_a.jpg" alt="bild"></div>
         <div>
-          <p>Ljushållare</p>
-          <p>Färg: Vit</p>
-          <p>40 kr</p>
+          <p>{{ cartItem.productName }}</p>
+          <p>{{ cartItem.price / cartItem.quantity }}</p>
         </div>
       </div>
       <div class="item-management">
         <div>
-          <button>-</button> 1 <button>+</button>
+          <button>-</button> {{ cartItem.quantity }} <button>+</button>
         </div>
-        <p>Totalpris för antal</p>
+        <p>Totalpris: {{ cartItem.price }}</p>
       </div>
     </div>
     
-    <div>
-      <p>Antal produkter i varukorg</p>
-      <p>Totalpris varukorg</p>
-      <button @click="goToCart">Gå till kassan</button>
-    </div>
   </div>
 
 </template>
@@ -30,15 +24,13 @@
 export default {
   name: 'CartItem',
   props: {
-    product: {
+    cartItem: {
       type: Object,
+    },
+    itemPrice: {
+      type: Number,
     }
   },
-  methods: {
-    goToCart() {
-      console.log('go to cart');
-    },
-  }
 }
 </script>
 
