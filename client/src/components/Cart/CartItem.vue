@@ -2,7 +2,10 @@
   <div>
     <div class="flex cart-item">
       <div class="flex item-info">
-        <div><img src="../../assets/images/products/512355/138542-1-512355-003_pack_a.jpg" alt="bild"></div>
+        <div>
+          <!-- <img src="../../assets/images/products/512355/138542-1-512355-003_pack_a.jpg" alt="bild"> -->
+          <img :src="cartItem.image.url" :alt="cartItem.image.alt">
+        </div>
         <div>
           <p>{{ cartItem.productName }}</p>
           <p>{{ cartItem.price / cartItem.quantity }}</p>
@@ -21,15 +24,13 @@
 </template>
 
 <script>
+
 export default {
   name: 'CartItem',
   props: {
     cartItem: {
       type: Object,
     },
-    itemPrice: {
-      type: Number,
-    }
   },
 }
 </script>
