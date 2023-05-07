@@ -2,7 +2,8 @@ const {loadOneCart, saveNewCart, deleteCart} = require('../models/cart');
 const { loadProductById } = require('../models/products');
 
 const loadCart = async () => {
-  return await loadOneCart();
+  const cartArray = await loadOneCart();
+  return cartArray[0];
 }
 
 const saveCart = async(productId, optionId) => {
