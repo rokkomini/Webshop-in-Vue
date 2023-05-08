@@ -1,6 +1,29 @@
+<template>
+  <Transition>
+    <div :class="[showCart ? 'show' : 'hide', 'side-cart']" >
+      <p v-if="loading">Loading cart</p>
+      <p v-if="error">{{ error.message }}</p>
+
+      <div v-if="cart">
+        <div v-for="product in cart.products" :key="product.optionId">
+          <!-- <CartItem :cartItem="product" @remove-one="$emit('remove-one', product.id)"/> -->
+          <CartItem :cartItem="product" @remove-one="removeOne" @add-one="addOne"/>
+        </div>
+      </div>
+
+      <div v-if="cart">
+        <p>Antal varor: {{ productCount }}</p>
+        <p>Antal varor countItems(cart): {{ countItems(cart.products) }}</p>
+        <p>Totalpris varukorg: {{ cart.total }} kr</p>
+        <button @click="goToCart">Gå till kassan</button>
+      </div>
+      
+    </div>
+  </Transition>
+</template>
+
 <script>
 import CartItem from './Cart/CartItem.vue';
-import { nextTick } from 'vue'
 
 export default {
     props: {
@@ -14,58 +37,25 @@ export default {
     components: { CartItem },
     data() {
       return {
-        productCount: null,
+        productCount: 0,
       }
     },
     methods: {
-      countItems(cart){
-        cart.products.forEach(product => {
-          return this.productCount += product.quantity;
-        });
-        nextTick(() => {
-          console.log('productCount: ', this.productCount)
-        })
+      countItems(products){
+        const countProd = products?.map((prod) => prod.quantity).reduce((a, b) => a + b, 0);
+        return this.productCount = countProd;
+      },
+      removeOne(id) {
+        console.log('remove item (cart.vue), id: ', id)
+        this.$emit('remove-one', id);
+      },
+      addOne(id) {
+        this.$emit('add-one', id);
       }
     },
-    beforeMount() {
-      this.countItems(this.cart);
-    },
-    // mounted() {
-    //   this.countItems(this.cart);
-    // }
   
 }
 </script>
-
-<template>
-  <Transition>
-    <div :class="[showCart ? 'show' : 'hide', 'side-cart']" >
-      <p v-if="loading">Loading cart</p>
-      <p v-if="error">{{ error.message }}</p>
-      <div v-if="cart">
-        <div v-for="product in cart.products" :key="product.optionId">
-          <CartItem :cartItem="product"/>
-        </div>
-        <div v-for="product in cart.products" :key="product.optionId">
-          <p>{{ product.productName }}</p>
-        </div>
-        <div>
-        <p>Antal varor: {{ productCount }}</p>
-        <p>Totalpris varukorg: {{ cart.total }} kr</p>
-        <button @click="goToCart">Gå till kassan</button>
-            </div>
-      </div>
-      <!-- <div v-for="item in cartProducts" :key="item.id">
-        <p :product="item">Cart:{{ item }}</p>
-      </div> -->
-      
-
-
-    </div>
-  </Transition>
-</template>
-
-
 
 <style lang="scss" scoped>
 .side-cart {

@@ -6,14 +6,14 @@ export const useCartStore = defineStore({
   id: 'cart',
 
   state: () => ({
-    cart: {},
+    cart: undefined,
     loadingCart: false,
     cartError: null
   }),
 
   actions: { 
     async getCart() { 
-      this.cart = {}
+      this.cart = []
       this.loadingCart = true
       try {
         // const response = await fetch(`${URL}/get-cart`)
@@ -21,7 +21,6 @@ export const useCartStore = defineStore({
         // return this.cart = data
         this.cart = await fetch(`${URL}/get-cart`)
           .then((res) => res.json())
-          .then(console.log('cart: ', URL))
       } catch {
         this.cartError = 'error fetching cart'
       } finally {
@@ -29,15 +28,67 @@ export const useCartStore = defineStore({
       }
     },
 
-    async addToCart(product, optionId) {
+    async removeQuantity(cartItem) {
+      // console.log('cart store, remove quantity: ', cartItem)
+      // this.cart = undefined
+      this.loadingCart = true
+      console.log('cart store, remove quantity: ', this.cart)
+      try {
+        await fetch(`${URL}/remove-quantity`, {
+          method: 'PATCH',
+          headers: {'Content-Type': 'application/json;charset=utf-8'},
+          body: JSON.stringify({ cartItem }) 
+        })
+        // const data = await response.json()
+        // console.log('..this.cart', data)
+        // this.cart = [...this.cart, data]
+        this.getCart()
+        
+        
+      } catch (error) {
+        this.cartError = error
+      } finally {
+        this.loadingCart = false
+      }
+    },
+    async addQuantity(cartItem) {
+      console.log('cart store, add quantity: ', cartItem)
+      // this.cart = undefined
+      this.loadingCart = true
+
+      try {
+        await fetch(`${URL}/add-quantity`, {
+          method: 'PATCH',
+          headers: {'Content-Type': 'application/json;charset=utf-8'},
+          body: JSON.stringify({ cartItem })
+        })
+        this.getCart()
+        // const data = await response.json()
+        // console.log('trying to add quantity', data)
+        // // this.getCart
+        // return this.cart = [...data]
+        
+      } catch (error) {
+        this.cartError = error
+      } finally {
+        this.loadingCart = false
+      }
+    },
+
+    async addToCart(product) {
+      console.log('cart store, product: ', product)
+      this.cart = {}
+      this.loadingCart = true
+      
       try {
         const response = await fetch(`${URL}/add-to-cart`, {
           method: 'POST',
           // headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(product, optionId)
+          body: JSON.stringify(product)
         })
         const data = await response.json()
-        this.cart = [...this.cart, data]
+        // this.cart = [...this.cart, data]
+        console.log('trying to add cart', data)
       } catch (error) {
         this.cartError = error
       } finally {

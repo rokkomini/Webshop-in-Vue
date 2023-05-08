@@ -30,6 +30,10 @@ const loadOneCart = async () => {
   return await CartModel.find();
 }
 
+const findCartItem = async (item) => {
+  return await CartModel.find(item);
+}
+
 const saveNewCart = async (cart) => { 
   const newCart = new CartModel(cart);
   return await newCart.save();
@@ -39,4 +43,4 @@ const deleteCart = async (cart) => {
   return await CartModel.deleteOne(cart).exec();
 }
 
-module.exports = { loadOneCart, saveNewCart, deleteCart }; 
+module.exports = { loadOneCart, saveNewCart, deleteCart, findCartItem }; 

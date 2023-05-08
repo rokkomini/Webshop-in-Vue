@@ -1,7 +1,7 @@
 const express = require('express');
 const cartRouter = express.Router();
 
-const { loadCart, saveCart } = require('../controllers/cartController');
+const { loadCart, saveCart, addInCart, removeInCart } = require('../controllers/cartController');
 
 cartRouter.get('/get-cart', async (req, res) => {
   try {
@@ -14,6 +14,7 @@ cartRouter.get('/get-cart', async (req, res) => {
 
 cartRouter.post('/add-to-cart', async (req, res) => {
   const product = req.body;
+  console.log('cart router', product);
   const productId = product.productId;
   const optionId = product.optionId;
   try {
@@ -23,5 +24,29 @@ cartRouter.post('/add-to-cart', async (req, res) => {
     res.status(400).send('Could not save cart');
   }
 })
+
+cartRouter.patch('/add-quantity', async (req, res) => { 
+  const itemId = req.body.cartItem
+  console.log('add req body', itemId)
+  try {
+    res.status(200).send(await addInCart(itemId));
+  } catch (err) {
+    console.error(err.message);
+    res.status(400).send('Could not add in cart');
+  }
+})
+
+cartRouter.patch('/remove-quantity', async (req, res) => { 
+  console.log('remove req body', req.body)
+  const itemId = req.body.cartItem
+  
+  try {
+    res.status(200).send(await removeInCart(itemId));
+  } catch (err) {
+    console.error(err.message);
+    res.status(400).send('Could not add in cart');
+  }
+})
+
 
 module.exports = cartRouter;

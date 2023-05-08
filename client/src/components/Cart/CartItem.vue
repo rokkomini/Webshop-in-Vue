@@ -3,7 +3,6 @@
     <div class="flex cart-item">
       <div class="flex item-info">
         <div>
-          <!-- <img src="../../assets/images/products/512355/138542-1-512355-003_pack_a.jpg" alt="bild"> -->
           <img :src="cartItem.image.url" :alt="cartItem.image.alt">
         </div>
         <div>
@@ -13,7 +12,9 @@
       </div>
       <div class="item-management">
         <div>
-          <button>-</button> {{ cartItem.quantity }} <button>+</button>
+          <button @click="removeOne">-</button> 
+            {{ cartItem.quantity }} 
+          <button @click="addOne">+</button>
         </div>
         <p>Totalpris: {{ cartItem.price }}</p>
       </div>
@@ -32,6 +33,15 @@ export default {
       type: Object,
     },
   },
+  methods: {
+    removeOne() {
+      console.log('remove item (cartItem), id: ', this.cartItem._id)
+      this.$emit('remove-one', this.cartItem._id);
+    },
+    addOne() {
+      console.log('add item (cartItem), id: ', this.cartItem._id)
+      this.$emit('add-one', this.cartItem._id);}
+  }
 }
 </script>
 
