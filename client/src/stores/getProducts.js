@@ -7,33 +7,38 @@ export const useProductStore = defineStore({
 
   state: () => ({
     products: [],
-    product: null,
-    loading: false,
-    error: null
+    product: {},
+    slug: null,
+    loadingProducts: false,
+    productError: null
   }),
 
   actions: {
     async getProducts() {
       this.products = []
-      this.loading = true
+      this.loadingProducts = true
       try {
         this.products = await fetch(`${URL}/product`).then((res) => res.json())
       } catch (error) {
-        this.error = error
+        this.productError = error
       } finally {
-        this.loading = false
+        this.loadingProducts = false
       }
     },
 
     async getProduct(slug) {
-      this.product = null
-      this.loading = true
+      console.log('product store slug', slug)
+      this.product = {}
+      this.loadingProducts = true
       try {
         this.product = await fetch(`${URL}/product/${slug}`).then((res) => res.json())
+        console.log('this.product', this.product.description)
       } catch (error) {
-        this.error = error
+        // this.productError = error
+        console.log('error', error)
       } finally {
-        this.loading = false
+        this.loadingProducts = false
+        console.log('finally')
       }
     }
   }
