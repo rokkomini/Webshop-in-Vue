@@ -6,7 +6,7 @@
       :error="cartError" 
       @remove-one="removeQuantity($event)"
       @add-one="addQuantity($event)"/>
-    <TopHeader @toggle-cart="toggleCart"/>
+    <TopHeader @toggle-cart="toggleCart" :showCartButton="showCartButton"/>
     <StartHeroVue />
     <p v-if="productError">{{ productError.message }}</p>
     <div v-if="products">
@@ -50,6 +50,7 @@ export default {
       showCart: false,
       cart: {},
       loadingCart: false,
+      showCartButton: true,
     }
   },
   methods: {

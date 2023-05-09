@@ -6,7 +6,7 @@
     </div>
     <div>Sökruta?</div>
     <div>En logga?</div>
-    <div>
+    <div v-show="showCartButton">
       <button @click="$event => $emit('toggle-cart')">Öppna varukorg</button>
     </div>
   </section>
@@ -15,6 +15,9 @@
 <script>
 export default {
   name: 'TopHeader',
+  props: {
+    showCartButton: Boolean,
+  },
   // methods: {
   //   toggleCart() {
   //     console.log('open cart');
