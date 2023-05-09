@@ -9,7 +9,11 @@
     </div>
 
     <div class="product-info">
-      <p>Name: {{ product.name }}</p>
+      <p>
+        <router-link :to="{ name: 'ProductDetail', params: { slug: product.slug } }">
+          Name: {{ product.name }}
+        </router-link> 
+      </p>
       <p>Brand: {{ product.brand }}</p>
       <p>Price: {{ product.price }} kr</p>
       <p>Color id: {{ selectedOption }}</p>
@@ -34,6 +38,7 @@
 
 <script>
 const URL = 'http://localhost:3005'
+import { RouterLink } from 'vue-router'
 
 export default {
   name: 'ProductCard',
