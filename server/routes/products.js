@@ -21,8 +21,9 @@ productRouter.post('/', async (req, res) => {
 })
 
 productRouter.get('/:slug',  async (req, res) => {
+  console.log('req params.slug: ', req.params.slug);
   try {
-    res.send(await loadSingleProduct(req.params.slug));
+    res.status(200).send(await loadSingleProduct(req.params.slug));
   } catch (err) {
     console.error(err.message);
     res.status(400).send('Could not load product');

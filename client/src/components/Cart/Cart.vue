@@ -1,12 +1,9 @@
 <template>
   <Transition>
     <div :class="[showCart ? 'show' : 'hide', 'side-cart']" >
-      <p v-if="loading">Loading cart</p>
       <p v-if="error">{{ error.message }}</p>
-
       <div v-if="cart">
         <div v-for="product in cart.products" :key="product.optionId">
-          <!-- <CartItem :cartItem="product" @remove-one="$emit('remove-one', product.id)"/> -->
           <CartItem :cartItem="product" @remove-one="removeOne" @add-one="addOne"/>
         </div>
       </div>
@@ -23,7 +20,7 @@
 </template>
 
 <script>
-import CartItem from './Cart/CartItem.vue';
+import CartItem from './CartItem.vue';
 
 export default {
     props: {
@@ -31,7 +28,6 @@ export default {
       cart: {
         type: Object,
       },
-      loading: Boolean,
       error: Object,
     },
     components: { CartItem },

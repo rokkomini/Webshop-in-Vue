@@ -5,9 +5,14 @@ const productRouter = require('./routes/products');
 const cartRouter = require('./routes/cart');
 const { setupMongoDb } = require('./models/common');
 
+var corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 5000;
 const MONGO_URL = process.env.MONGODB_URL || 'mongodb://localhost:27017/webshop';

@@ -1,6 +1,6 @@
 <template>
   <section class="top-header-wrapper">
-    HEADER
+    <RouterLink to="/">Home</RouterLink>
     <div class="top-icons">
       <font-awesome-icon icon="fa-brands fa-instagram" />
     </div>

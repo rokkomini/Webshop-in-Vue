@@ -15,8 +15,9 @@ const app = createApp(App)
 /* add the icons in use in project here */
 library.add(faInstagram)
 app.component('font-awesome-icon', FontAwesomeIcon)
-app.use(createPinia())
 app.use(router)
+app.use(createPinia())
+
 
 app.mount('#app')
 
