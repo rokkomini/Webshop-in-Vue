@@ -10,9 +10,9 @@
 
       <div v-if="cart">
         <p>Antal varor: {{ productCount }}</p>
-        <p>Antal varor countItems(cart): {{ countItems(cart.products) }}</p>
+        <p>Antal varor countItems(cart): {{ quantity }}</p>
         <p>Totalpris varukorg: {{ cart.total }} kr</p>
-        <RouterLink to="/checkout">Gå till kassan</RouterLink>
+        <RouterLink class="button primary" to="/checkout">Gå till kassan</RouterLink>
       </div>
       
     </div>
@@ -29,6 +29,7 @@ export default {
         type: Object,
       },
       error: Object,
+      quantity: Number,
     },
     components: { CartItem },
     data() {

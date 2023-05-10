@@ -25,14 +25,15 @@ export const useCheckoutStore = defineStore({
       }
     },
 
-    async saveOrder(order) {
+    async saveOrder(customer, cart) {
       this.order = undefined
       this.loadingOrder = true
+      console.log('store: customer', customer, 'cart', cart)
       try {
         await fetch(`${URL}/save-order`, {
           method: 'POST',
           headers: {'Content-Type': 'application/json;charset=utf-8'},
-          body: JSON.stringify({ order }) 
+          body: JSON.stringify({ customer, cart }) 
         })
         this.order = await fetch(`${URL}/get-order`)
           .then((res) => res.json())

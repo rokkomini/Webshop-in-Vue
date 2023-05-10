@@ -9,7 +9,7 @@
         :error="this.cartStore.cartError"
         @remove-one="this.cartStore.removeQuantity($event)" 
         @add-one="this.cartStore.addQuantity($event)"/>
-      <CheckoutForm />
+      <CheckoutForm @submit-order="this.checkoutStore.saveOrder($event, this.cartStore.cart)"/>
     </div>
   </div>
 </template>
@@ -19,6 +19,7 @@ import { useCartStore } from '../stores/cart';
 import CheckoutForm from '../components/Checkout/CheckoutForm.vue';
 import CheckoutSummary from '../components/Checkout/CheckoutSummary.vue';
 import TopHeader from '../components/Header/TopHeader.vue';
+import { useCheckoutStore } from '../stores/checkout';
 
 
 export default {
@@ -29,19 +30,26 @@ export default {
   },
   setup() {
     const cartStore  = useCartStore();
+    const checkoutStore = useCheckoutStore();
     // const { removeQuantity, addQuantity } = useCartStore();
     // const { cart, cartError } = useCartStore();
     // return { cartStore, cart, cartError }
-    return { cartStore }
+    return { cartStore, checkoutStore }
   },
   data() {
     return {
       currentCart: undefined,
       showCart: false,
       loadingCart: false,
+      order: {},
+      loadingOrder: false,
+      orderError: null,
     }
   },
   methods: {
+    // submitOrder() {
+    //   this.checkoutStore.saveOrder();
+    // }
     // toggleCart() {
     //   this.showCart = !this.showCart;
     // },

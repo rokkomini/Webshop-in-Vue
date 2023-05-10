@@ -43,16 +43,18 @@
         </div>
       </div>
 
-      <div>Choose form of payment: {{ payment }}</div>
+      
+        Choose form of payment: {{ payment }}
+      <div class="flex">
+        <input type="radio" id="card" value="card" v-model="payment" />
+        <img src="../../assets/credit-card-svgrepo-com.svg" alt="card-icon" class="svg-icon">
 
-      <input type="radio" id="card" :value="card" v-model="payment" />
-      <label for="card">Card</label>
-
-      <input type="radio" id="klarma" :value="klarma" v-model="payment" />
-      <label for="klarma">Klarma</label>
+        <input type="radio" id="klarma" value="klarma" v-model="payment" />
+        <img src="../../assets/Klarna marketing badge (pink rgb.svg).svg" alt="Klarna-logo" class="svg-icon">
+      </div>
       <div class="flex form-buttons">
-        <input class="button primary" type="submit" value="Skicka">
-        <RouterLink to="/" class="button primary">Cancel</RouterLink>
+        <input class="button primary" type="submit" value="Proceed and pay">
+        <RouterLink to="/" class="button primary">Cancel purchase</RouterLink>
       </div>
     </form>
     
@@ -71,11 +73,14 @@ export default {
       zip: '',
       city: '',
       country: '',
-      paymentMethod: '',
+      payment: null,
+      cart: {},
     }
   },
   props: {
-
+    // cart: {
+    //   type: Object,
+    // },
   },
   methods: {
     onSubmit(e) {
@@ -87,14 +92,14 @@ export default {
       }
 
       const customer = {
-        name: this.firstName + '' + this.lastName,
+        name: this.firstName + ' ' + this.lastName,
         email: this.email,
         phone: this.phone,
-        address: this.address + '' + this.zip + '' +this.city + '' + this.country,
+        address: this.address + ' ' + this.zip + ' ' +this.city + ' ' + this.country,
         paymentMethod: this.payment,
       }
 
-      this.$emit('save-order', customer)
+      this.$emit('submit-order', customer, this.cart)
 
       this.firstName = ''
       this.lastName = ''

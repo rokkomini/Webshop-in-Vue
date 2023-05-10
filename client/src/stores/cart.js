@@ -7,6 +7,7 @@ export const useCartStore = defineStore({
 
   state: () => ({
     cart: undefined,
+    quantity: 0,
     loadingCart: false,
     cartError: null
   }),
@@ -15,17 +16,20 @@ export const useCartStore = defineStore({
     async getCart() { 
       this.cart = []
       this.loadingCart = true
+      this.quantity = 0
       try {
         // const response = await fetch(`${URL}/get-cart`)
         // const data = await response
         // return this.cart = data
         this.cart = await fetch(`${URL}/get-cart`)
           .then((res) => res.json())
+          this.quantity = this.cart.products?.map((item) => item.quantity).reduce((acc, item) => acc + item, 0)
       } catch {
         this.cartError = 'error fetching cart'
       } finally {
         this.loadingCart = false
       }
+      // this.quantity = this.cart.products?.reduce((acc, item) => acc + item.quantity, 0)
     },
 
     async removeQuantity(cartItem) {
@@ -94,6 +98,10 @@ export const useCartStore = defineStore({
       } finally {
         this.loadingCart = false
       }
+    },
+
+    async countItems() { 
+
     }
   }
 })
