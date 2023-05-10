@@ -8,11 +8,15 @@
         </div>
       </div>
 
-      <div v-if="cart">
+      <div v-if="quantity > 0">
         <p>Antal varor: {{ productCount }}</p>
         <p>Antal varor countItems(cart): {{ quantity }}</p>
         <p>Totalpris varukorg: {{ cart.total }} kr</p>
         <RouterLink class="button primary" to="/checkout">Gå till kassan</RouterLink>
+      </div>
+
+      <div v-if="quantity < 1">
+        No items in cart
       </div>
       
     </div>

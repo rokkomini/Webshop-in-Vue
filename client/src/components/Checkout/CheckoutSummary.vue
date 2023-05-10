@@ -9,11 +9,16 @@
         </div>
       </div>
 
-      <div v-if="cart">
+      <div v-if="quantity > 0">
         <p>Antal varor: {{ productCount }}</p>
-        <p>Antal varor countItems(cart): {{ countItems(cart.products) }}</p>
+        <p>Antal varor countItems(cart): {{ quantity }}</p>
         <p>Totalpris varukorg: {{ cart.total }} kr</p>
       </div>
+
+      <div v-if="quantity < 1">
+        No items in cart
+      </div>
+      
   </div>
 </template>
 
@@ -27,6 +32,7 @@ export default {
         type: Object,
       },
       error: Object,
+      quantity: Number,
     },
     components: { CartItem },
     data() {

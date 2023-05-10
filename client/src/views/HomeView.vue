@@ -35,10 +35,6 @@ const { getCart, removeQuantity, addQuantity } = useCartStore();
 
 getProducts();
 getCart();
-
-console.log('quantity', quantity)
-console.log('cart', cart)
-
 </script>
 
 <script>
@@ -61,6 +57,7 @@ export default {
     toggleCart() {
       this.showCart = !this.showCart;
     },
+    
   }
 }
 </script>

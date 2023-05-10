@@ -84,7 +84,6 @@ export default {
   },
   methods: {
     onSubmit(e) {
-      console.log('submit')
       e.preventDefault();
       if(!this.firstName || !this.lastName || !this.email || !this.phone || !this.address || !this.zip || !this.city || !this.country || !this.payment) {
         alert('Please fill in all fields')
