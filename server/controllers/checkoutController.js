@@ -1,8 +1,9 @@
 const { loadOrderFromDB, saveOrderInDB } = require('../models/checkOut');
 const { loadOneCart, deleteCart } = require('../models/cart');
 
-const loadOrder = async () => {
-  const orderArray = await loadOrderfromDB();
+const loadOrder = async (customerEmail) => {
+  const orderArray = await loadOrderFromDB(customerEmail);
+  console.log('orderArray', orderArray)
   return orderArray[0];
 }
 

@@ -12,14 +12,17 @@ const checkOutSchema = new Schema({
     products: [],
     total: { type: Number, required: true },
   },
+  timestamp: { type: Date, default: Date.now },
 },
-{collection: 'checkOut'}
+{collection: 'orders'}
 )
 
 const CheckOutModel = model('CheckOut', checkOutSchema);
 
-const loadOrderFromDB = async () => {
-  return await CheckOutModel.find();
+const loadOrderFromDB = async (customerEmail) => {
+  console.log('customerEmail in model', customerEmail)
+  const latestOrder = await CheckOutModel.find({ 'customer.email': customerEmail}).sort({timestamp: -1}).limit(1).exec();
+  return latestOrder;
 }
 
 const saveOrderInDB = async (order) => { 
