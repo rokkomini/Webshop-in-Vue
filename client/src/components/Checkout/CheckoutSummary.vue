@@ -31,7 +31,7 @@ export default {
       cart: {
         type: Object,
       },
-      error: Object,
+      error: undefined,
       quantity: Number,
     },
     components: { CartItem },

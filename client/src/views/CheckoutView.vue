@@ -3,17 +3,16 @@
   <div>
     <div id="overlay"></div>
     <TopHeader :showCartButton="false"/>
-    <h1>Checkout view</h1>
-      <!-- <p>{{ cart }}</p> -->
-    
+    <h1>Checkout view</h1>    
     <div class="flex checkout-wrapper">  
       <div v-show="loadingOrder" class="loading checkout">
       </div>
-      <CheckoutConfirmation 
-        :showModal="this.showConfirmation"
-        @close="closeConfirmation"
-        :order="this.checkoutStore.order" 
-        />
+        <OrderConfirmation
+          v-if="showConfirmation"
+          :showModal="this.showConfirmation"
+          @close="closeConfirmation"
+          :order="this.checkoutStore.order"
+          />
         
       <CheckoutSummary 
         :cart="this.cartStore.cart" 
@@ -26,7 +25,7 @@
       <CheckoutForm 
         @submit-order="this.checkoutStore.saveOrder($event, this.cartStore.cart)" 
         @get-order="this.checkoutStore.getOrder($event)"
-        onSubmit()
+        @show-confirmation="onSubmit()" 
       />
     </div>
   </div>
@@ -38,21 +37,18 @@ import CheckoutForm from '../components/Checkout/CheckoutForm.vue';
 import CheckoutSummary from '../components/Checkout/CheckoutSummary.vue';
 import TopHeader from '../components/Header/TopHeader.vue';
 import { useCheckoutStore } from '../stores/checkout';
-import CheckoutConfirmation from '../components/Checkout/CheckoutConfirmation.vue';
+import OrderConfirmation from '../components/Order/OrderConfirmation.vue';
 
 export default {
   components: {
     TopHeader,
     CheckoutForm, 
     CheckoutSummary,
-    CheckoutConfirmation,
+    OrderConfirmation,
   },
   setup() {
     const cartStore  = useCartStore();
     const checkoutStore = useCheckoutStore();
-    // const { removeQuantity, addQuantity } = useCartStore();
-    // const { cart, cartError } = useCartStore();
-    // return { cartStore, cart, cartError }
     return { cartStore, checkoutStore }
   },
   data() {
@@ -68,32 +64,24 @@ export default {
   },
   methods: {
     async onSubmit() {
-      console.log('testing SUBMIIIIT')
       this.loadingOrder = true;
       document.getElementById("overlay").style.display = "block";
       setTimeout(() => {
         this.loadingOrder = false;
-        this.cartStore.cart = {}
+        this.cartStore.getCart();
         this.showConfirmation = true;
         document.getElementById("overlay").style.display = "none";
-        // this.$router.push({ name: 'OrderConfirmation' })
       }, 1500);
     },
     closeConfirmation() {
       this.showConfirmation = false;
       this.$router.push({ name: 'home' })
     },
-      
-    // toggleCart() {
-    //   this.showCart = !this.showCart;
-    // },
   },
   async created() {
     console.log('Checkout detail view is now created')
     console.log('Checkout view is now created')
-    this.cartStore.getCart();
-    // return console.log(this.cartStore) 
-    
+    this.cartStore.getCart();   
   },
 }
 </script>

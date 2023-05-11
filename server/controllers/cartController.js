@@ -12,7 +12,7 @@ const saveCart = async(productId, optionId) => {
     const cart = cartArray[0];
     const product = await loadProductById(productId)
 
-    console.log('cart: ', cart)
+    // console.log('cart: ', cart)
     if (!product) {
       throw new Error('Product not found');
     }
@@ -28,15 +28,15 @@ const saveCart = async(productId, optionId) => {
     }
     
     if (cart) {
-      console.log('cart found')
+      // console.log('cart found')
       let productIndex = cart.products.findIndex((p) => p.productId === product.id && p.optionId === optionId);
       if (productIndex > -1) {
-        console.log('product found in cart')
+        // console.log('product found in cart')
         cart.products[productIndex].quantity += 1;
         cart.products[productIndex].price += price;
         cart.total += price;
       } else {
-        console.log('product not found in cart')
+        // console.log('product not found in cart')
         cart.products.push({
           productId: productId,
           optionId: optionId,
@@ -49,7 +49,7 @@ const saveCart = async(productId, optionId) => {
       }
       await saveNewCart(cart);
     } else {
-      console.log('no cart found, new cart to be created')
+      // console.log('no cart found, new cart to be created')
       const newCart = {
         products: [{
           productId: productId,
@@ -70,7 +70,7 @@ const saveCart = async(productId, optionId) => {
 }
 
 const addInCart = async (itemId) => { 
-  console.log('add in cart', itemId)
+  // console.log('add in cart', itemId)
   try {
     // const cartItem = await findCartItem(cartItem);
     const cart = await loadCart();
@@ -95,13 +95,13 @@ const addInCart = async (itemId) => {
 const removeInCart = async (itemId) => { 
   try {
     // const cartItem = await findCartItem(cartItem);
-    console.log('remove in cart', itemId)
+    // console.log('remove in cart', itemId)
     const cart = await loadCart();
     if (!cart) {
       throw new Error('Cartitem not found');
     }
     let itemIndex = cart.products.findIndex((p) => p.id == itemId);
-    console.log('item index', itemIndex)
+    // console.log('item index', itemIndex)
     if (itemIndex > -1) {
       let cartItem = cart.products[itemIndex];
       const product = await loadProductById(cartItem.productId)

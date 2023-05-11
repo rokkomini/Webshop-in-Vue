@@ -58,6 +58,11 @@ cursor: pointer;
   }
 }
 
+.yellow-wrapper {
+  background-color: $fourth-color;
+  color: $primary-font-color;
+}
+
 a {
   text-decoration: none;
 }
@@ -71,12 +76,17 @@ a {
 }
 
 .loading {
-  display: inline-block;
+  // display: inline-block;
+  position: fixed;
+  z-index: 500;
+  left: calc(50% - 100px);
   width: 100%;
   height: 100%;
   border: 5px solid $primary-color;
   border-radius: 50%;
   border-top-color: $secondary-color;
+  display: table;
+  // background-color: rgba(0, 0, 0, 0.5);
   animation: spin 1s ease-in-out infinite;
   -webkit-animation: spin 1s ease-in-out infinite;
 }

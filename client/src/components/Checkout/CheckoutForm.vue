@@ -16,7 +16,7 @@
       <div class="flex">
         <div class="form-control">
           <label for="email">E-post</label>
-          <input type="email" id="email" name="email" v-model="email" placeholder="Email adress">
+          <input type="email" id="email" name="email" v-model="email" placeholder="Email address">
         </div>
         <div class="form-control">
           <label for="phone">Telefon</label>
@@ -77,11 +77,6 @@ export default {
       cart: {},
     }
   },
-  props: {
-    // cart: {
-    //   type: Object,
-    // },
-  },
   methods: {
     onSubmit(e) {
       e.preventDefault();
@@ -99,6 +94,8 @@ export default {
       }
 
       this.$emit('submit-order', customer, this.cart)
+      this.$emit('get-order', customer.email)
+      this.$emit('show-confirmation')
 
       this.firstName = ''
       this.lastName = ''
