@@ -1,19 +1,19 @@
 <template>
   <div>
+    <div id="overlay" @click="closeCart"></div>
     <Cart 
       :showCart="showCart" 
       :cart="this.cartStore.cart" 
       :error="this.cartStore.cartError" 
+      :quantity="this.cartStore.quantity"
       @remove-one="this.cartStore.removeQuantity($event)"
       @add-one="this.cartStore.addQuantity($event)"/>
-      <TopHeader @toggle-cart="toggleCart" :showCartButton="showCartButton"/>
+      <TopHeader @toggle-cart="toggleCart" :showCartButton="showCartButton" :quantity="this.cartStore.quantity"/>
     Show product details
 
     <p>{{ slug }}</p>
     <p>{{ this.productStore.product.name }}</p>
   
-    <!-- <p>{{ productItem.price }}</p> -->
-    <!-- <img :src="product.mainImage.url" :alt="product.mainImage.alt"> -->
     <ProductCard :product="this.productStore.product" />
   </div>
 </template>
@@ -50,6 +50,15 @@ export default {
   methods: {
     toggleCart() {
       this.showCart = !this.showCart;
+      if (this.showCart) {
+        document.getElementById("overlay").style.display = "block";
+      } else {
+        document.getElementById("overlay").style.display = "none";
+      }
+    },
+    closeCart() {
+      this.showCart = false;
+      document.getElementById("overlay").style.display = "none";
     },
   },
   async created() {

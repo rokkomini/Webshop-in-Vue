@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div id="overlay" @click="closeCart"></div>
     <Cart 
       :showCart="showCart" 
       :cart="cart" 
@@ -56,6 +57,15 @@ export default {
   methods: {
     toggleCart() {
       this.showCart = !this.showCart;
+      if (this.showCart) {
+        document.getElementById("overlay").style.display = "block";
+      } else {
+        document.getElementById("overlay").style.display = "none";
+      }
+    },
+    closeCart() {
+      this.showCart = false;
+      document.getElementById("overlay").style.display = "none";
     },
     
   }
