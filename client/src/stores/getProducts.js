@@ -27,7 +27,7 @@ export const useProductStore = defineStore({
     },
 
     async getProduct(slug) {
-      console.log('product store slug', slug)
+      // console.log('product store slug', slug)
       this.product = {}
       this.loadingProducts = true
       try {

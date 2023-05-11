@@ -7,6 +7,7 @@ export const useCartStore = defineStore({
 
   state: () => ({
     cart: undefined,
+    quantity: 0,
     loadingCart: false,
     cartError: null
   }),
@@ -15,24 +16,27 @@ export const useCartStore = defineStore({
     async getCart() { 
       this.cart = []
       this.loadingCart = true
+      this.quantity = 0
       try {
         // const response = await fetch(`${URL}/get-cart`)
         // const data = await response
         // return this.cart = data
         this.cart = await fetch(`${URL}/get-cart`)
           .then((res) => res.json())
+          this.quantity = this.cart.products?.map((item) => item.quantity).reduce((acc, item) => acc + item, 0)
       } catch {
         this.cartError = 'error fetching cart'
       } finally {
         this.loadingCart = false
       }
+      // this.quantity = this.cart.products?.reduce((acc, item) => acc + item.quantity, 0)
     },
 
     async removeQuantity(cartItem) {
       // console.log('cart store, remove quantity: ', cartItem)
       // this.cart = undefined
       this.loadingCart = true
-      console.log('cart store, remove quantity: ', this.cart)
+      // console.log('cart store, remove quantity: ', this.cart)
       try {
         await fetch(`${URL}/remove-quantity`, {
           method: 'PATCH',
@@ -52,7 +56,7 @@ export const useCartStore = defineStore({
       }
     },
     async addQuantity(cartItem) {
-      console.log('cart store, add quantity: ', cartItem)
+      // console.log('cart store, add quantity: ', cartItem)
       // this.cart = undefined
       this.loadingCart = true
 
@@ -76,7 +80,7 @@ export const useCartStore = defineStore({
     },
 
     async addToCart(product) {
-      console.log('cart store, product: ', product)
+      // console.log('cart store, product: ', product)
       this.cart = {}
       this.loadingCart = true
       
@@ -86,14 +90,18 @@ export const useCartStore = defineStore({
           // headers: {'Content-Type': 'application/json'},
           body: JSON.stringify(product)
         })
-        const data = await response.json()
+        await response.json()
         // this.cart = [...this.cart, data]
-        console.log('trying to add cart', data)
+        // console.log('trying to add cart', data)
       } catch (error) {
         this.cartError = error
       } finally {
         this.loadingCart = false
       }
+    },
+
+    async countItems() { 
+
     }
   }
 })

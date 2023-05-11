@@ -4,9 +4,10 @@
       :showCart="showCart" 
       :cart="cart" 
       :error="cartError" 
+      :quantity="quantity"
       @remove-one="removeQuantity($event)"
       @add-one="addQuantity($event)"/>
-    <TopHeader @toggle-cart="toggleCart"/>
+    <TopHeader @toggle-cart="toggleCart" :showCartButton="showCartButton" :quantity="quantity"/>
     <StartHeroVue />
     <p v-if="productError">{{ productError.message }}</p>
     <div v-if="products">
@@ -28,13 +29,12 @@ import { useCartStore } from '../stores/cart';
 
 
 const { products, productError } = storeToRefs(useProductStore());
-const { cart, cartError } = storeToRefs(useCartStore());
+const { cart, quantity, cartError } = storeToRefs(useCartStore());
 const { getProducts } = useProductStore();
 const { getCart, removeQuantity, addQuantity } = useCartStore();
 
 getProducts();
 getCart();
-
 </script>
 
 <script>
@@ -50,12 +50,14 @@ export default {
       showCart: false,
       cart: {},
       loadingCart: false,
+      showCartButton: true,
     }
   },
   methods: {
     toggleCart() {
       this.showCart = !this.showCart;
     },
+    
   }
 }
 </script>

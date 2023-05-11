@@ -12,9 +12,9 @@
       </div>
       <div class="item-management">
         <div>
-          <button @click="removeOne">-</button> 
+          <button class="button secondary" @click="removeOne">-</button> 
             {{ cartItem.quantity }} 
-          <button @click="addOne">+</button>
+          <button class="button secondary" @click="addOne">+</button>
         </div>
         <p>Totalpris: {{ cartItem.price }}</p>
       </div>
@@ -56,6 +56,11 @@ export default {
   img {
     width: 100px;
     height: 100px;
+  }
+
+  .button.secondary{
+    padding: 3px 10px;
+    font-size: 20px;
   }
 }
 </style>

@@ -6,7 +6,7 @@
       :error="this.cartStore.cartError" 
       @remove-one="this.cartStore.removeQuantity($event)"
       @add-one="this.cartStore.addQuantity($event)"/>
-      <TopHeader @toggle-cart="toggleCart"/>
+      <TopHeader @toggle-cart="toggleCart" :showCartButton="showCartButton"/>
     Show product details
 
     <p>{{ slug }}</p>
@@ -33,6 +33,7 @@ export default {
       cart: {},
       loadingCart: false,
       productItem: {},
+      showCartButton: true,
     }
   },
   components: {

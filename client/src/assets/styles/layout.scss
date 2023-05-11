@@ -1,4 +1,12 @@
+// SCSS SYNTAX
+$primary-color: #CDF0EA;
+$secondary-color: #F9F9F9;
+$third-color: #ECC5FB;
+$fourth-color: #FAF4B7;
+$primary-font-color: #808080;
+
 body {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0;
 }
 
@@ -12,4 +20,80 @@ body {
 
 .hide {
   opacity: 0;
+}
+
+.button {
+padding: 10px 20px;
+border-radius: 5px;
+border: none;
+font-size: large;
+background-color: $secondary-color;
+cursor: pointer;
+
+  &.primary {
+    background-color: $primary-color;
+    color: $primary-font-color;
+    border: $primary-color solid 2px;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: $secondary-color;
+      color: $primary-font-color;;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+
+  &.secondary {
+    border: solid 2px $third-color;
+    color: $third-color;
+    background-color: none;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover{
+    transition: all 0.3s ease-in-out;
+    border: $primary-color solid 2px;
+    color: $primary-color;
+    background-color: $secondary-color;
+  }
+}
+
+.yellow-wrapper {
+  background-color: $fourth-color;
+  color: $primary-font-color;
+}
+
+a {
+  text-decoration: none;
+}
+
+.svg-icon {
+  max-width: 100px;
+}
+
+.font-awesome {
+  height: 30px;
+}
+
+.loading {
+  // display: inline-block;
+  position: fixed;
+  z-index: 500;
+  left: calc(50% - 100px);
+  width: 100%;
+  height: 100%;
+  border: 5px solid $primary-color;
+  border-radius: 50%;
+  border-top-color: $secondary-color;
+  display: table;
+  // background-color: rgba(0, 0, 0, 0.5);
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
 }
