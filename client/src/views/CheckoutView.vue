@@ -1,22 +1,33 @@
 <template>
+  
   <div>
+    <div id="overlay"></div>
     <TopHeader :showCartButton="false"/>
     <h1>Checkout view</h1>
       <!-- <p>{{ cart }}</p> -->
     
     <div class="flex checkout-wrapper">  
-      <CheckoutConfirmation :showModal="this.showConfirmation"/>    
+      <div v-show="loadingOrder" class="loading checkout">
+      </div>
+      <CheckoutConfirmation 
+        :showModal="this.showConfirmation"
+        @close="closeConfirmation"
+        :order="this.checkoutStore.order" 
+        />
+        
       <CheckoutSummary 
         :cart="this.cartStore.cart" 
         :error="this.cartStore.cartError"
         :quantity="this.cartStore.quantity"
         @remove-one="this.cartStore.removeQuantity($event)" 
-        @add-one="this.cartStore.addQuantity($event)"/>
-
-        <div v-show="loadingOrder" class="loading checkout">
-      </div>
-      <CheckoutForm @submit-order="this.checkoutStore.saveOrder($event, this.cartStore.cart), onSubmit()"/>
-      <!-- <CheckoutForm @submit-order="submitOrder"/> -->
+        @add-one="this.cartStore.addQuantity($event)"
+      />
+        
+      <CheckoutForm 
+        @submit-order="this.checkoutStore.saveOrder($event, this.cartStore.cart)" 
+        @get-order="this.checkoutStore.getOrder($event)"
+        onSubmit()
+      />
     </div>
   </div>
 </template>
@@ -59,13 +70,18 @@ export default {
     async onSubmit() {
       console.log('testing SUBMIIIIT')
       this.loadingOrder = true;
+      document.getElementById("overlay").style.display = "block";
       setTimeout(() => {
         this.loadingOrder = false;
         this.cartStore.cart = {}
         this.showConfirmation = true;
+        document.getElementById("overlay").style.display = "none";
         // this.$router.push({ name: 'OrderConfirmation' })
       }, 1500);
-
+    },
+    closeConfirmation() {
+      this.showConfirmation = false;
+      this.$router.push({ name: 'home' })
     },
       
     // toggleCart() {
@@ -83,6 +99,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+}
 .checkout-wrapper {
   justify-content: space-between;
   margin: 0 auto;
@@ -93,13 +122,13 @@ export default {
 
   .loading.checkout{
     // position: absolute;
-    margin: 0 auto;
+    // margin: 0 auto;
     // left: 50%;
     // right: 50%;
     height: 200px;
     width: 200px;
-    overflow: visible;
-    z-index: 10;
+    // overflow: visible;
+    // z-index: 10;
   }
 
 
