@@ -26,8 +26,8 @@
 
       <div class="flex form-address">
         <div class="form-control">
-          <label for="address">Adress</label>
-          <input type="text" id="address" name="address" v-model="address" placeholder="Adress">
+          <label for="address">Address</label>
+          <input type="text" id="address" name="address" v-model="address" placeholder="Address">
         </div>
         <div class="form-control">
           <label for="zip">Postnummer</label>

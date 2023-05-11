@@ -1,6 +1,9 @@
 <template>
-  <footer>
+  <footer class="pink-wrapper">
     <h1>A footer</h1>
+    <div class="top-icons">
+      <font-awesome-icon icon="fa-brands fa-instagram" />
+    </div>
   </footer>
 </template>
 
@@ -8,6 +11,5 @@
 footer {
   height: 300px;
   width: 100%;
-  background-color: #F2B8C6;
 }
 </style>
