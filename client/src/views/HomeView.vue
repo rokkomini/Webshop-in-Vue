@@ -8,11 +8,13 @@
       :quantity="quantity"
       @remove-one="removeQuantity($event)"
       @add-one="addQuantity($event)"/>
-    <TopHeader @toggle-cart="toggleCart" :showCartButton="showCartButton" :quantity="quantity"/>
+    <TopHeader 
+      @toggle-cart="toggleCart" 
+      :showCartButton="showCartButton" 
+      :quantity="quantity"/>
     <StartHeroVue />
     <p v-if="productError">{{ productError.message }}</p>
     <div v-if="products">
-      <!-- <ProductList :products="products" @add-to-cart="addToCart(products)"/> -->
       <ProductList :products="products" @load-cart="getCart()"/>
     </div>
   </div>

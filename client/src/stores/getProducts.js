@@ -32,13 +32,26 @@ export const useProductStore = defineStore({
       this.loadingProducts = true
       try {
         this.product = await fetch(`${URL}/product/${slug}`).then((res) => res.json())
-        console.log('this.product', this.product.description)
       } catch (error) {
         // this.productError = error
         console.log('error', error)
       } finally {
         this.loadingProducts = false
         console.log('finally')
+      }
+    },
+
+    async getSearchResults(query) {
+      console.log('product store query', query)
+      this.products = []
+      this.loadingProducts = true
+      try {
+        this.products = await fetch(`${URL}/product/search/${query}`).then((res) => res.json())
+        console.log('search products', this.products)
+      } catch (error) {
+        this.productError = error
+      } finally {
+        this.loadingProducts = false
       }
     }
   }

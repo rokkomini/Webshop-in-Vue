@@ -1,20 +1,28 @@
 <template>
-  <header class="flex blue-wrapper ">
-    <div class="flex left-header">
-      <RouterLink to="/"><font-awesome-icon icon="fa-solid fa-house" /></RouterLink>
-      <div class="search-section">
-        <input class="search input" type="text" placeholder="Search" />
-        <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
+  <header class="flex blue-wrapper">
+    <div class="flex page-wrapper">
+      <div class="flex left-header">
+        <RouterLink to="/"><font-awesome-icon icon="fa-solid fa-house" /></RouterLink>
+        <div class="search-section">
+          <input
+            class="search input"
+            type="text"
+            placeholder="Search"
+            v-model="query"
+            @keyup.enter="searchQuery"
+          />
+          <font-awesome-icon icon="fa-solid fa-magnifying-glass" @click="searchQuery"/>
+        </div>
       </div>
-    </div>
-    <div><h1>ITSY BITSY</h1></div>
-    <div class="flex">
-      <div v-show="showCartButton">
-        <font-awesome-icon icon="fa-solid fa-cart-shopping" @click="$event => $emit('toggle-cart')"
-          class="font-awesome" />
-        <span @click="$event => $emit('toggle-cart')" class="badge pink-wrapper">
-          <div>{{ quantity }}</div>
-        </span>
+      <div><h1>ITSY BITSY</h1></div>
+      <div class="flex">
+        <div v-show="showCartButton">
+          <font-awesome-icon icon="fa-solid fa-cart-shopping" @click="$event => $emit('toggle-cart')"
+            class="font-awesome" />
+          <span @click="$event => $emit('toggle-cart')" class="badge pink-wrapper">
+            <div>{{ quantity }}</div>
+          </span>
+        </div>
       </div>
     </div>
   </header>
@@ -23,10 +31,22 @@
 <script>
 export default {
   name: 'TopHeader',
+  data() {
+    return {
+      query: '',
+    }
+  },
   props: {
     showCartButton: Boolean,
     cart: Object,
     quantity: Number,
+  },
+  methods: {
+    searchQuery() {
+      this.$emit('search-query', this.query)
+      this.$router.push({ name: 'ProductSearch', params: { query: this.query } })
+      this.query = ''
+    }
   },
   emits: ['toggle-cart']
 }
@@ -39,9 +59,14 @@ export default {
 // }
 .blue-wrapper {
   height: 40px;
-  align-items: center;
   padding: 20px;
-  justify-content: space-between;
+  justify-content: center;
+  
+
+  .page-wrapper {
+    align-items: center;
+    justify-content: space-between;
+  }
 
   span {
     cursor: pointer;
