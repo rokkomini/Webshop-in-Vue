@@ -9,23 +9,20 @@
       @remove-one="this.cartStore.removeQuantity($event)"
       @add-one="this.cartStore.addQuantity($event)"/>
       <TopHeader @toggle-cart="toggleCart" :showCartButton="showCartButton" :quantity="this.cartStore.quantity"/>
-    Show product details
-
-    <p>{{ slug }}</p>
-    <p>{{ this.productStore.product.name }}</p>
-  
-    <ProductCard :product="this.productStore.product" />
+    <div class="flex page-wrapper">
+      <ProductDetailsCard :product="this.productStore.product" @load-cart="this.cartStore.getCart"/>
+    </div>
   </div>
 </template>
-
-
 
 <script>
 import TopHeader from '../components/Header/TopHeader.vue';
 import Cart from '../components/Cart/Cart.vue';
-import ProductCard from '../components/Product/ProductCard.vue';
+// import ProductCard from '../components/Product/ProductCard.vue';
 import { useProductStore } from '../stores/getProducts';
 import { useCartStore } from '../stores/cart';
+import ProductDetailsCard from '../components/Product/ProductDetailsCard.vue';
+
 export default {
   data() {
     return {
@@ -39,7 +36,8 @@ export default {
   components: {
     TopHeader,
     Cart,
-    ProductCard,
+    // ProductCard,
+    ProductDetailsCard,
   },
   setup() {
     const productStore = useProductStore();
@@ -73,3 +71,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.flex.page-wrapper {
+  justify-content: center;
+}
+</style>
