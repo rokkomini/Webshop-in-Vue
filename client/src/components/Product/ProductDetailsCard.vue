@@ -1,0 +1,150 @@
+<template>
+  <div class="flex product-card-wrapper">
+    <div class="product-img" v-if="!selectedOption">
+      <img :src="product.mainImage?.url" :alt="product.mainImage?.alt">
+    </div>
+
+    <div v-if="selectedOption">
+      <div v-for="option in product.options.color" v-bind:key="option._id" class="product-img">
+        <img v-if="option._id == selectedOption" :src="option.image.url" :alt="option.image.alt">
+      </div>
+    </div>
+
+    <div class="product-info">
+      <h1> {{ product.name }} </h1>
+      <p>By: {{ product.brand }}</p>
+      <p> {{ product.description }}</p>
+      <h3>{{ product.price }} kr</h3>
+      
+      <div v-if="product.options?.color.length > 0">
+        <h4>Choose color</h4>
+        <div class="flex radio-options">
+          <div v-for="option in product.options.color" v-bind:key="option._id">
+              <label :for="option._id">
+                <input type="radio" :id="option._id" :value="option._id" v-model="selectedOption" />
+                <img :src="option.image.url" :alt="option.image.alt" class="svg-icon">
+              </label>
+          </div>
+        </div>
+      </div>
+
+      <div v-if="product.options?.size.length > 0">
+        <h4>Choose size</h4>
+        <div class="flex radio-options">
+          <div v-for="option in product.options.color" v-bind:key="option._id">
+              <label :for="option._id">
+                <input type="radio" :id="option._id" :value="option._id" v-model="selectedOption" />
+                <h2>option.size</h2>
+              </label>
+          </div>
+        </div>
+      </div>
+      <button class="button primary" @click="addToCart">Buy</button>
+    </div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.product-card-wrapper {
+  height: auto;
+  width: 100%;
+
+  .product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .radio-options {
+    gap: 20px;
+  }
+
+  [type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+  outline: 2px solid grey;
+
+}
+
+  .product-info {
+    padding: 15px;
+    width: 50%;
+  }
+}
+</style>
+
+<script>
+const URL = 'http://localhost:3005'
+
+export default {
+  name: 'ProductDetailsCard',
+  props: {
+    product: {
+      type: Object,
+    },
+    value: {
+      type: String,
+      default: ''
+    },
+    option: {
+      type: String,
+      default: ''
+    }
+  },
+  data() {
+    return {
+      selectedOption: null,
+      setImage: null,
+      loadingCart: false,  
+    }
+  },
+  methods: {
+    updateOption(event) {
+      return this.selectedOption = event.target.value;
+    },
+    async addToCart(e) {
+      e.preventDefault();
+      if (!this.selectedOption) {
+        alert('Please select a color')
+        return
+      }
+
+      const newAdd = {
+        productId: this.product._id,
+        optionId: this.selectedOption,
+      }
+
+      console.log('new add', newAdd)
+      console.log('URL', URL)
+
+      try {
+        const response = await fetch(`${URL}/cart/add-to-cart`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newAdd)
+        })
+        const data = await response.json()
+        console.log('trying to add cart', data)
+      } catch (error) {
+        console.log('error')
+      } finally {
+        this.loadingCart = false
+      }
+      this.$emit('load-cart')
+    }
+  },
+}
+
+</script>
+
