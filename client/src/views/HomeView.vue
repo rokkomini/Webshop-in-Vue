@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div id="overlay" @click="closeCart"></div>
     <Cart 
       :showCart="showCart" 
       :cart="cart" 
@@ -7,11 +8,13 @@
       :quantity="quantity"
       @remove-one="removeQuantity($event)"
       @add-one="addQuantity($event)"/>
-    <TopHeader @toggle-cart="toggleCart" :showCartButton="showCartButton" :quantity="quantity"/>
+    <TopHeader 
+      @toggle-cart="toggleCart" 
+      :showCartButton="showCartButton" 
+      :quantity="quantity"/>
     <StartHeroVue />
     <p v-if="productError">{{ productError.message }}</p>
     <div v-if="products">
-      <!-- <ProductList :products="products" @add-to-cart="addToCart(products)"/> -->
       <ProductList :products="products" @load-cart="getCart()"/>
     </div>
   </div>
@@ -56,6 +59,15 @@ export default {
   methods: {
     toggleCart() {
       this.showCart = !this.showCart;
+      if (this.showCart) {
+        document.getElementById("overlay").style.display = "block";
+      } else {
+        document.getElementById("overlay").style.display = "none";
+      }
+    },
+    closeCart() {
+      this.showCart = false;
+      document.getElementById("overlay").style.display = "none";
     },
     
   }

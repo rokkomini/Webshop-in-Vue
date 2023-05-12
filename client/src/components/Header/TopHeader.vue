@@ -1,77 +1,103 @@
 <template>
-  <section class="flex top-header-wrapper">
-    <RouterLink to="/">Home</RouterLink>
-    <div class="top-icons">
-      <font-awesome-icon icon="fa-brands fa-instagram" />
-    </div>
-    <div>Sökruta?</div>
-    <div>En logga?</div>
-    <div v-show="showCartButton">
-      
-      <!-- <button class="button secondary" @click="$event => $emit('toggle-cart')">Öppna varukorg</button> -->
-      <font-awesome-icon  icon="fa-solid fa-cart-shopping" @click="$event => $emit('toggle-cart')" class="font-awesome"/>
-      <span @click="$event => $emit('toggle-cart')" class="badge">{{ quantity }}</span>
+  <header class="flex blue-wrapper">
+    <div class="flex page-wrapper">
+      <div class="flex left-header">
+        <RouterLink to="/"><font-awesome-icon icon="fa-solid fa-house" /></RouterLink>
+        <div class="search-section">
+          <input
+            class="search input"
+            type="text"
+            placeholder="Search"
+            v-model="query"
+            @keyup.enter="searchQuery"
+          />
+          <font-awesome-icon icon="fa-solid fa-magnifying-glass" @click="searchQuery"/>
+        </div>
       </div>
-  </section>
+      <div><h1>ITSY BITSY</h1></div>
+      <div class="flex">
+        <div v-show="showCartButton">
+          <font-awesome-icon icon="fa-solid fa-cart-shopping" @click="$event => $emit('toggle-cart')"
+            class="font-awesome" />
+          <span @click="$event => $emit('toggle-cart')" class="badge pink-wrapper">
+            <div>{{ quantity }}</div>
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
 </template>
 
 <script>
 export default {
   name: 'TopHeader',
+  data() {
+    return {
+      query: '',
+    }
+  },
   props: {
     showCartButton: Boolean,
     cart: Object,
     quantity: Number,
   },
-
-  // methods: {
-  //   toggleCart() {
-  //     console.log('open cart');
-  //   }
-  // },
-
+  methods: {
+    searchQuery() {
+      this.$emit('search-query', this.query)
+      this.$router.push({ name: 'ProductSearch', params: { query: this.query } })
+      this.query = ''
+    }
+  },
   emits: ['toggle-cart']
 }
 </script>
 
 <style lang="scss" scoped>
-.top-header-wrapper {
-  background-color: aqua;
+
+// header {
+//   position: fixed;
+// }
+.blue-wrapper {
   height: 40px;
-  align-items: center;
   padding: 20px;
+  justify-content: center;
+  
+
+  .page-wrapper {
+    align-items: center;
+    justify-content: space-between;
+  }
 
   span {
     cursor: pointer;
   }
+
+  .left-header {
+    gap: 20px;
+    align-items: center;
+
+    a {
+      color:#808080;
+      text-decoration: none;
+      font-size: 2rem;
+    }
+  }
 }
 
 .badge {
-  background-color: pink;
   border-radius: 50%;
   text-align: center;
   display: inline-block;
   height: 25px;
   width: 25px;
-  // font-size: 12px;
-  background: pink;
-  color: #fff;
-  // padding: 0 5px;
   vertical-align: top;
   margin-left: -10px;
-  // padding: 5px;
   border-radius: 50%;
-}
 
-  // font-size:12px;
-  // color: #fff;
-  // background: red;
-  // border-radius:50%;
-  // padding: 0 5px;
-  // position:relative;
-  // left:-8px;
-  // top:-10px;
-  // opacity:0.9;
+  p {
+    margin: 0;
+  }
+}
 
 .top-icons {
   display: flex;
@@ -86,4 +112,21 @@ export default {
   color: #F9F9F9;
   cursor: pointer;
 }
+
+.search-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+
+  svg {
+    position: absolute;
+    font-size: 1.5rem;
+  }
+
+
+
+
+}
+
 </style>
