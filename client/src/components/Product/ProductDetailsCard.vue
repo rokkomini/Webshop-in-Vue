@@ -1,11 +1,13 @@
 <template>
   <div class="flex product-card-wrapper">
     <div class="product-img" v-if="!selectedOption">
-      <img :src="product.mainImage.url" :alt="product.mainImage.alt">
+      <img :src="product.mainImage?.url" :alt="product.mainImage?.alt">
     </div>
 
-    <div v-for="option in product.options.color" v-bind:key="option._id" class="product-img">
-      <img v-if="option._id == selectedOption" :src="option.image.url" :alt="option.image.alt">
+    <div v-if="selectedOption">
+      <div v-for="option in product.options.color" v-bind:key="option._id" class="product-img">
+        <img v-if="option._id == selectedOption" :src="option.image.url" :alt="option.image.alt">
+      </div>
     </div>
 
     <div class="product-info">
@@ -14,7 +16,7 @@
       <p> {{ product.description }}</p>
       <h3>{{ product.price }} kr</h3>
       
-      <div v-if="product.options.color.length > 0">
+      <div v-if="product.options?.color.length > 0">
         <h4>Choose color</h4>
         <div class="flex radio-options">
           <div v-for="option in product.options.color" v-bind:key="option._id">
@@ -26,7 +28,7 @@
         </div>
       </div>
 
-      <div v-if="product.options.size.length > 0">
+      <div v-if="product.options?.size.length > 0">
         <h4>Choose size</h4>
         <div class="flex radio-options">
           <div v-for="option in product.options.color" v-bind:key="option._id">

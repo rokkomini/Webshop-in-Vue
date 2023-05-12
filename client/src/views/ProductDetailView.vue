@@ -10,7 +10,7 @@
       @add-one="this.cartStore.addQuantity($event)"/>
       <TopHeader @toggle-cart="toggleCart" :showCartButton="showCartButton" :quantity="this.cartStore.quantity"/>
     <div class="flex page-wrapper">
-      <ProductDetailsCard :product="this.productStore.product" @load-cart="this.cartStore.getCart"/>
+      <ProductDetailsCard v-if="productItem" :product="this.productStore.product" @load-cart="this.cartStore.getCart"/>
     </div>
   </div>
 </template>

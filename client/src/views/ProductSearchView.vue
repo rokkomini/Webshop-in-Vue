@@ -1,27 +1,24 @@
 <template>
-  <div>
-    
+  <div>    
     <div id="overlay" @click="closeCart"></div>
-    <Cart 
-      :showCart="showCart" 
-      :cart="this.cartStore.cart" 
-      :error="this.cartStore.cartError" 
-      :quantity="this.cartStore.quantity"
-      @remove-one="this.cartStore.removeQuantity($event)"
-      @add-one="this.cartStore.addQuantity($event)"/>
+      <Cart 
+        :showCart="showCart" 
+        :cart="this.cartStore.cart" 
+        :error="this.cartStore.cartError" 
+        :quantity="this.cartStore.quantity"
+        @remove-one="this.cartStore.removeQuantity($event)"
+        @add-one="this.cartStore.addQuantity($event)"
+      />
       <TopHeader 
         @toggle-cart="toggleCart" 
         :showCartButton="showCartButton" 
         :quantity="this.cartStore.quantity"
         @search-query="searchProducts($event)"
       />
-      <h1>Search results for: {{ query }}</h1>
-  
-    <ProductList v-if="query" :products="this.productStore.products" />
+      <h1>Search results for: {{ query }}</h1> 
+      <ProductList v-if="query" :products="this.productStore.products" />
   </div>
 </template>
-
-
 
 <script>
 import TopHeader from '../components/Header/TopHeader.vue';
