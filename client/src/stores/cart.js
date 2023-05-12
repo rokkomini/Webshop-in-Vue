@@ -33,21 +33,14 @@ export const useCartStore = defineStore({
     },
 
     async removeQuantity(cartItem) {
-      // console.log('cart store, remove quantity: ', cartItem)
-      // this.cart = undefined
       this.loadingCart = true
-      // console.log('cart store, remove quantity: ', this.cart)
       try {
         await fetch(`${URL}/remove-quantity`, {
           method: 'PATCH',
           headers: {'Content-Type': 'application/json;charset=utf-8'},
           body: JSON.stringify({ cartItem }) 
         })
-        // const data = await response.json()
-        // console.log('..this.cart', data)
-        // this.cart = [...this.cart, data]
-        this.getCart()
-        
+        this.getCart()       
         
       } catch (error) {
         this.cartError = error
@@ -56,8 +49,6 @@ export const useCartStore = defineStore({
       }
     },
     async addQuantity(cartItem) {
-      // console.log('cart store, add quantity: ', cartItem)
-      // this.cart = undefined
       this.loadingCart = true
 
       try {
@@ -67,10 +58,6 @@ export const useCartStore = defineStore({
           body: JSON.stringify({ cartItem })
         })
         this.getCart()
-        // const data = await response.json()
-        // console.log('trying to add quantity', data)
-        // // this.getCart
-        // return this.cart = [...data]
         
       } catch (error) {
         this.cartError = error
@@ -80,7 +67,6 @@ export const useCartStore = defineStore({
     },
 
     async addToCart(product) {
-      // console.log('cart store, product: ', product)
       this.cart = {}
       this.loadingCart = true
       
@@ -91,8 +77,6 @@ export const useCartStore = defineStore({
           body: JSON.stringify(product)
         })
         await response.json()
-        // this.cart = [...this.cart, data]
-        // console.log('trying to add cart', data)
       } catch (error) {
         this.cartError = error
       } finally {

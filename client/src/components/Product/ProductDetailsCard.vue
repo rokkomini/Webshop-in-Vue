@@ -125,17 +125,13 @@ export default {
         optionId: this.selectedOption,
       }
 
-      console.log('new add', newAdd)
-      console.log('URL', URL)
-
       try {
         const response = await fetch(`${URL}/cart/add-to-cart`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(newAdd)
         })
-        const data = await response.json()
-        console.log('trying to add cart', data)
+        await response.json()
       } catch (error) {
         console.log('error')
       } finally {

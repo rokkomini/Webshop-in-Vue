@@ -27,7 +27,6 @@ export const useProductStore = defineStore({
     },
 
     async getProduct(slug) {
-      // console.log('product store slug', slug)
       this.product = {}
       this.loadingProducts = true
       try {
@@ -42,12 +41,10 @@ export const useProductStore = defineStore({
     },
 
     async getSearchResults(query) {
-      console.log('product store query', query)
       this.products = []
       this.loadingProducts = true
       try {
         this.products = await fetch(`${URL}/product/search/${query}`).then((res) => res.json())
-        console.log('search products', this.products)
       } catch (error) {
         this.productError = error
       } finally {

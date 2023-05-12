@@ -60,15 +60,11 @@ export default {
     },
   },
   async created() {
-    console.log('Product detail view is now created')
     this.cartStore.getCart();
     this.productStore.getProduct(this.slug);
     return this.productItem = this.productStore.product;
 
   },
-  mounted() {
-    console.log('Product detail view is now mounted')   
-  }
 }
 </script>
 

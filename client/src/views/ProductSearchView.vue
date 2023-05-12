@@ -15,8 +15,12 @@
         :quantity="this.cartStore.quantity"
         @search-query="searchProducts($event)"
       />
-      <h1>Search results for: {{ query }}</h1> 
-      <ProductList v-if="query" :products="this.productStore.products" />
+      <div class="page-wrapper">
+        <h1>Search results for: {{ query }}</h1>
+        <div class="flex">
+          <ProductList v-if="query" :products="this.productStore.products" />
+        </div>
+      </div>
   </div>
 </template>
 
@@ -64,15 +68,25 @@ export default {
       document.getElementById("overlay").style.display = "none";
     },
     searchProducts(query) {
-      console.log('got query? ', query)
       this.productStore.getSearchResults(query)
     },
   },
   async created() {
-    console.log('Product detail view is now created')
     this.cartStore.getCart();
-    console.log('query: ', this.query)
     this.productStore.getSearchResults(this.query);
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.page-wrapper {
+  
+  padding-bottom: 30px;
+h1 {
+  color: #808080;
+}
+  .flex {
+    justify-content: center;
+  }
+}
+</style>
