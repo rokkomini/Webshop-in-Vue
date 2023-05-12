@@ -1,4 +1,4 @@
-const { loadAllProducts, loadProductBySlug, saveNewProduct } = require('../models/products');
+const { loadAllProducts, loadProductBySlug, saveNewProduct, searchProducts } = require('../models/products');
 
 const saveProduct = async(product) => {
   await saveNewProduct(product);
@@ -17,4 +17,14 @@ const loadSingleProduct = async(slug) => {
   return product;
 }
 
-module.exports = { saveProduct, loadProducts, loadSingleProduct };
+const getSearchResults = async(query) => {
+  console.log('query in controller: ', query)
+  const searchResults = await searchProducts(query);
+  if (searchResults.length < 1) {
+    throw new Error('No matching products found');
+  }
+  console.log('searchResults in controller: ', searchResults.length)
+  return searchResults;
+}
+
+module.exports = { saveProduct, loadProducts, loadSingleProduct, getSearchResults };

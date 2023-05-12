@@ -16,7 +16,6 @@
       </p>
       <p>Brand: {{ product.brand }}</p>
       <p>Price: {{ product.price }} kr</p>
-      <p>Color id: {{ selectedOption }}</p>
 
       <select v-if="product.options.size.length > 0" @change="updateOption($event)">
         <option v-for="option in product.options.size" :value="option.value" v-bind:key="option.id" :option="option">
@@ -38,7 +37,6 @@
 
 <script>
 const URL = 'http://localhost:3005'
-import { RouterLink } from 'vue-router'
 
 export default {
   name: 'ProductCard',

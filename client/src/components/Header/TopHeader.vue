@@ -1,10 +1,13 @@
 <template>
-  <section class="flex blue-wrapper">
+  <header class="flex blue-wrapper ">
     <div class="flex left-header">
       <RouterLink to="/"><font-awesome-icon icon="fa-solid fa-house" /></RouterLink>
-      <div>Sökruta?</div>
+      <div class="search-section">
+        <input class="search input" type="text" placeholder="Search" />
+        <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
+      </div>
     </div>
-    <div>En logga?</div>
+    <div><h1>ITSY BITSY</h1></div>
     <div class="flex">
       <div v-show="showCartButton">
         <font-awesome-icon icon="fa-solid fa-cart-shopping" @click="$event => $emit('toggle-cart')"
@@ -14,7 +17,7 @@
         </span>
       </div>
     </div>
-  </section>
+  </header>
 </template>
 
 <script>
@@ -30,6 +33,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+// header {
+//   position: fixed;
+// }
 .blue-wrapper {
   height: 40px;
   align-items: center;
@@ -42,18 +49,22 @@ export default {
 
   .left-header {
     gap: 20px;
+    align-items: center;
+
+    a {
+      color:#808080;
+      text-decoration: none;
+      font-size: 2rem;
+    }
   }
 }
 
 .badge {
-  // background-color: pink;
   border-radius: 50%;
   text-align: center;
   display: inline-block;
   height: 25px;
   width: 25px;
-  // background: pink;
-  // color: #fff;
   vertical-align: top;
   margin-left: -10px;
   border-radius: 50%;
@@ -62,7 +73,6 @@ export default {
     margin: 0;
   }
 }
-
 
 .top-icons {
   display: flex;
@@ -77,4 +87,21 @@ export default {
   color: #F9F9F9;
   cursor: pointer;
 }
+
+.search-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+
+  svg {
+    position: absolute;
+    font-size: 1.5rem;
+  }
+
+
+
+
+}
+
 </style>

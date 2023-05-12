@@ -6,7 +6,7 @@
       <!-- <ProductCard v-for="product in products" :key="product._id" :product="product"  @add-to-cart="$emit('add-to-cart', $event)"/> -->
       <ProductCard v-for="product in products" :key="product._id" :product="product" @load-cart="$emit('load-cart')"/>
     <!-- </div> -->
-    <p v-for="product in products" :key="product.id">{{ product._id }}</p>
+  
   </div>
 </template>
 

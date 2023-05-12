@@ -1,6 +1,6 @@
 const express = require('express');
 const productRouter = express.Router();
-const { saveProduct, loadProducts, loadSingleProduct } = require('../controllers/productController');
+const { saveProduct, loadProducts, loadSingleProduct, getSearchResults } = require('../controllers/productController');
 
 productRouter.get('/', async (req, res) => {
   try {
@@ -29,5 +29,15 @@ productRouter.get('/:slug',  async (req, res) => {
     res.status(400).send('Could not load product');
   }
 })
+
+productRouter.get('/search/:query', async (req, res) => {
+  console.log('req params search: ', req.params.query)
+  try {
+    res.status(200).send(await getSearchResults(req.params.query));
+  } catch (err) { 
+    res.status(400).send('Could not find any matching products');
+  }
+})
+
 
 module.exports = productRouter;
