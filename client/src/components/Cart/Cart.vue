@@ -8,10 +8,9 @@
         </div>
       </div>
 
-      <div v-if="quantity > 0">
-        <p>Antal varor: {{ productCount }}</p>
-        <p>Antal varor countItems(cart): {{ quantity }}</p>
-        <p>Totalpris varukorg: {{ cart.total }} kr</p>
+      <div class="flex" v-if="quantity > 0">
+        <p>Quantity: {{ quantity }}</p>
+        <p>Total: {{ cart.total }} kr</p>
         <RouterLink class="button primary" to="/checkout">Gå till kassan</RouterLink>
       </div>
 
@@ -47,7 +46,6 @@ export default {
         return this.productCount = countProd;
       },
       removeOne(id) {
-        console.log('remove item (cart.vue), id: ', id)
         this.$emit('remove-one', id);
       },
       addOne(id) {
@@ -75,6 +73,10 @@ export default {
   &.hide {
     transition:  1s ease;
     right: -100%;
+  }
+
+  .flex {
+    flex-direction: column;
   }
 }
 </style>

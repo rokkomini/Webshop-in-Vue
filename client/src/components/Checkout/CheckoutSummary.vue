@@ -1,7 +1,5 @@
 <template>
   <div>
-    Checkout summary
-    <!-- <CartItem /> -->
     <p v-if="error">{{ error.message }}</p>
       <div v-if="cart">
         <div v-for="product in cart.products" :key="product.optionId">
@@ -10,9 +8,8 @@
       </div>
 
       <div v-if="quantity > 0">
-        <p>Antal varor: {{ productCount }}</p>
-        <p>Antal varor countItems(cart): {{ quantity }}</p>
-        <p>Totalpris varukorg: {{ cart.total }} kr</p>
+        <p>Quantity: {{ quantity }}</p>
+        <p>{{ cart.total }} kr</p>
       </div>
 
       <div v-if="quantity < 1">
@@ -46,7 +43,6 @@ export default {
         return this.productCount = countProd;
       },
       removeOne(id) {
-        console.log('remove item (cart.vue), id: ', id)
         this.$emit('remove-one', id);
       },
       addOne(id) {

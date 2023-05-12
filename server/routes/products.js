@@ -21,7 +21,6 @@ productRouter.post('/', async (req, res) => {
 })
 
 productRouter.get('/:slug',  async (req, res) => {
-  console.log('req params.slug: ', req.params.slug);
   try {
     res.status(200).send(await loadSingleProduct(req.params.slug));
   } catch (err) {
@@ -31,7 +30,6 @@ productRouter.get('/:slug',  async (req, res) => {
 })
 
 productRouter.get('/search/:query', async (req, res) => {
-  console.log('req params search: ', req.params.query)
   try {
     res.status(200).send(await getSearchResults(req.params.query));
   } catch (err) { 

@@ -1,6 +1,5 @@
 <template>
   <div class="flex checkoutform-wrapper">
-    <h3>CheckoutForm</h3>
     <form @submit="onSubmit">
       <div class="flex">
         <div class="form-control">

@@ -8,6 +8,7 @@ $primary-font-color: #808080;
 body {
   // font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0;
+  background-color: $secondary-color ;
 }
 
 .page-wrapper {
@@ -38,6 +39,12 @@ border: none;
 font-size: large;
 background-color: $secondary-color;
 cursor: pointer;
+transition: all 0.3s ease-in-out;
+
+&:hover { 
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+  transition: all 0.3s ease-in-out;
+}
 
   &.primary {
     background-color: $primary-color;
@@ -46,6 +53,7 @@ cursor: pointer;
     transition: all 0.3s ease-in-out;
 
     &:hover {
+      box-shadow: none;
       background-color: $secondary-color;
       color: $primary-font-color;;
       transition: all 0.3s ease-in-out;
@@ -57,13 +65,14 @@ cursor: pointer;
     color: $third-color;
     background-color: none;
     transition: all 0.3s ease-in-out;
-  }
 
-  &:hover{
-    transition: all 0.3s ease-in-out;
-    border: $primary-color solid 2px;
-    color: $primary-color;
-    background-color: $secondary-color;
+    &:hover{
+      box-shadow: none;
+      transition: all 0.3s ease-in-out;
+      border: $primary-color solid 2px;
+      color: $primary-color;
+      background-color: $secondary-color;
+    }
   }
 }
 
@@ -145,3 +154,36 @@ a {
     outline: none;
   }
 }
+
+// .custom-select {
+//   position: relative;
+//   font-family: Arial;
+// }
+
+.selected {
+
+  color: $primary-font-color;
+  select {
+    background: $fourth-color;
+    // appearance: ;
+    width: 200px;
+    padding: 10px;
+    border-radius: 3px;
+    border: $secondary-color solid 2px;
+    background: none;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+
+    option {
+      color: $primary-font-color;
+      border-bottom: solid 1px $secondary-color;
+      border-radius: 3px;
+      padding: 10px;
+      min-height: 20px;
+      cursor: pointer;
+    }
+  }
+}
+
