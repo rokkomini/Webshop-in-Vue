@@ -1,9 +1,9 @@
 <template>
-  <header class="flex blue-wrapper">
-    <div class="flex page-wrapper">
-      <div class="flex left-header">
+  <header class="flex header">
+    <div class="flex-row space-between width-wrapper">
+      <div class="flex-row left-header">
         <RouterLink to="/"><font-awesome-icon icon="fa-solid fa-house" /></RouterLink>
-        <div class="search-section">
+        <div class="show-medium search-section">
           <input
             class="search input"
             type="text"
@@ -54,72 +54,72 @@ export default {
 
 <style lang="scss" scoped>
 
-.blue-wrapper {
-  height: 40px;
-  padding: 20px;
-  justify-content: center;
+// .blue-wrapper {
+//   height: 40px;
+//   padding: 20px;
+//   justify-content: center;
   
 
-  .page-wrapper {
-    align-items: center;
-    justify-content: space-between;
-  }
+//   .page-wrapper {
+//     align-items: center;
+//     justify-content: space-between;
+//   }
 
-  span {
-    cursor: pointer;
-  }
+//   span {
+//     cursor: pointer;
+//   }
 
-  .left-header {
-    gap: 20px;
-    align-items: center;
+//   .left-header {
+//     gap: 20px;
+//     align-items: center;
 
-    a {
-      color:#808080;
-      text-decoration: none;
-      font-size: 2rem;
-    }
-  }
-}
+//     a {
+//       color:#808080;
+//       text-decoration: none;
+//       font-size: 2rem;
+//     }
+//   }
+// }
 
-.badge {
-  border-radius: 50%;
-  text-align: center;
-  display: inline-block;
-  height: 25px;
-  width: 25px;
-  vertical-align: top;
-  margin-left: -10px;
-  border-radius: 50%;
+// .badge {
+//   border-radius: 50%;
+//   text-align: center;
+//   display: inline-block;
+//   height: 25px;
+//   width: 25px;
+//   vertical-align: top;
+//   margin-left: -10px;
+//   border-radius: 50%;
 
-  p {
-    margin: 0;
-  }
-}
+//   p {
+//     margin: 0;
+//   }
+// }
 
-.top-icons {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  background-color: #f5f5f5;
-}
+// .top-icons {
+//   display: flex;
+//   justify-content: flex-end;
+//   align-items: center;
+//   padding: 0.5rem 1rem;
+//   background-color: #f5f5f5;
+// }
 
-.fa-cart-shopping {
-  font-size: 1.5rem;
-  color: #F9F9F9;
-  cursor: pointer;
-}
+// .fa-cart-shopping {
+//   font-size: 1.5rem;
+//   color: #F9F9F9;
+//   cursor: pointer;
+// }
 
-.search-section {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
+// .search-section {
+//   display: flex;
+//   align-items: center;
+//   justify-content: flex-end;
+//   gap: 10px;
 
-  svg {
-    position: absolute;
-    font-size: 1.5rem;
-  }
-}
+//   svg {
+//     position: absolute;
+//     font-size: 1.5rem;
+//   }
+// }
 
 </style>
