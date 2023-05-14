@@ -1,5 +1,5 @@
 const { loadOrderFromDB, saveOrderInDB } = require('../models/checkOut');
-const { loadOneCart, deleteCart } = require('../models/cart');
+const { loadOneCart, deleteAllInCart } = require('../models/cart');
 
 const loadOrder = async (customerEmail) => {
   const orderArray = await loadOrderFromDB(customerEmail);
@@ -17,12 +17,13 @@ const saveOrder = async (order) => {
       throw new Error('Order not found');
     }
     order.cart = cart;
+    deleteCartAllInCart(cart.id);
     await saveOrderInDB(order);
   }
   catch (err) {
     console.error(err.message);
   } finally {
-    await deleteCart();
+    return order;
   }
 }
 

@@ -36,11 +36,9 @@ export default {
   },
   methods: {
     removeOne() {
-      console.log('remove item (cartItem), id: ', this.cartItem._id)
       this.$emit('remove-one', this.cartItem._id);
     },
     addOne() {
-      console.log('add item (cartItem), id: ', this.cartItem._id)
       this.$emit('add-one', this.cartItem._id);}
   }
 }
