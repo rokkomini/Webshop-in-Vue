@@ -5,6 +5,7 @@
 
 // Components
 @import './components/cart.scss';
+@import './components/footer.scss';
 @import './components/product-card.scss';
 @import './components/product-list.scss';
 // SCSS SYNTAX
@@ -167,30 +168,30 @@ a {
 //   font-family: Arial;
 // }
 
-.selected {
+// .selected {
 
-  color: $primary-font-color;
-  select {
-    background: $fourth-color;
-    // appearance: ;
-    width: 200px;
-    padding: 10px;
-    border-radius: 3px;
-    border: $secondary-color solid 2px;
-    background: none;
-    cursor: pointer;
-    &:focus {
-      outline: none;
-    }
+//   color: $primary-font-color;
+//   select {
+//     background: $fourth-color;
+//     // appearance: ;
+//     width: 200px;
+//     padding: 10px;
+//     border-radius: 3px;
+//     border: $secondary-color solid 2px;
+//     background: none;
+//     cursor: pointer;
+//     &:focus {
+//       outline: none;
+//     }
 
-    option {
-      color: $primary-font-color;
-      border-bottom: solid 1px $secondary-color;
-      border-radius: 3px;
-      padding: 10px;
-      min-height: 20px;
-      cursor: pointer;
-    }
-  }
-}
+//     option {
+//       color: $primary-font-color;
+//       border-bottom: solid 1px $secondary-color;
+//       border-radius: 3px;
+//       padding: 10px;
+//       min-height: 20px;
+//       cursor: pointer;
+//     }
+//   }
+// }
 
