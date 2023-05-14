@@ -117,7 +117,7 @@ const deleteCart = async () => {
     if (!cart) {
       throw new Error('No cart to delete not found');
     }
-    await deleteAllInCart(cart.id);
+    await deleteAllInCart();
   } catch (error) {
     throw new Error('Error deleting cart');
   } finally { 

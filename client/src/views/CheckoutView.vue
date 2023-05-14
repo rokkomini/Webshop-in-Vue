@@ -1,19 +1,18 @@
 <template>
   <div>
     <div id="overlay"></div>
-    <TopHeader :showCartButton="false" />
-    
+    <TopHeader :showCartButton="false" />    
     <div class="width-wrapper">
       <h1>Checkout your order</h1>
       <div class="flex space-between">
         <div v-show="loadingOrder" class="loading checkout">
-        </div>
+      </div>
         <OrderConfirmation
-          v-if="showConfirmation"
+          v-if="this.showConfirmation"
           :showModal="this.showConfirmation"
           @close="closeConfirmation"
           :order="this.checkoutStore.order"
-          />
+        />
         <CheckoutSummary
           :cart="this.cartStore.cart"
           :error="this.cartStore.cartError"
@@ -27,8 +26,8 @@
           @get-order="this.checkoutStore.getOrder($event)"
           @show-confirmation="onSubmit()"
         />
-        </div>
       </div>
+    </div>
   </div>
 </template>
 

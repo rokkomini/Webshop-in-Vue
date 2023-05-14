@@ -39,9 +39,9 @@ const saveNewCart = async (cart) => {
   return await newCart.save();
 }
 
-const deleteAllInCart = async (cartId) => {
-  console.log('delete all in cart model', cartId); 
-  return await CartModel.deleteOne({ _id: cartId }).exec();
+const deleteAllInCart = async () => {
+  console.log('delete all in cart model'); 
+  return await CartModel.deleteOne().exec();
 }
 
 const deleteItemFromCart = async (item) => {

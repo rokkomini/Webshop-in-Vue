@@ -16,14 +16,14 @@ const saveOrder = async (order) => {
     if (!order) {
       throw new Error('Order not found');
     }
-    order.cart = cart;
-    deleteCartAllInCart(cart.id);
+    order.cart = cart;   
     await saveOrderInDB(order);
   }
   catch (err) {
     console.error(err.message);
   } finally {
-    return order;
+    deleteAllInCart();
+    await loadOrderFromDB(order.customer.email);
   }
 }
 

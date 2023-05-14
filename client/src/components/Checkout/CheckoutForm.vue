@@ -92,7 +92,7 @@ export default {
         paymentMethod: this.payment,
       }
 
-      this.$emit('submit-order', customer, this.cart)
+      this.$emit('submit-order', customer, this.cart)     
       this.$emit('get-order', customer.email)
       this.$emit('show-confirmation')
 

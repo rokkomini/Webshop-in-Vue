@@ -23,12 +23,6 @@ export default {
   components: {
     ProductCard
   },
-  emits: ['add-to-cart'],
+  emits: ['add-to-cart', 'load-cart'],
 }
 </script>
-
-<!-- <style lang="scss" scoped>
-.flex {
-  justify-content: space-between;
-}
-</style> -->

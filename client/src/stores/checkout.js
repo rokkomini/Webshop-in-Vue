@@ -13,7 +13,6 @@ export const useCheckoutStore = defineStore({
 
   actions: {
     async getOrder(customerEmail) {
-      console.log('customerEmail in store', customerEmail)
       this.order =  {}
       this.loadingOrder = true
       try {
@@ -31,15 +30,21 @@ export const useCheckoutStore = defineStore({
       this.order = undefined
       this.loadingOrder = true
       try {
-        await fetch(`${URL}/save-order`, {
+        const response = await fetch(`${URL}/save-order`, {
           method: 'POST',
           headers: {'Content-Type': 'application/json;charset=utf-8'},
           body: JSON.stringify({ customer, cart }) 
         })
+        await response
+        this.getOrder(customer.email)
+
+        console.log('save order', this.order)
+        // // .then((res) => res.json())
+        // this.getOrder(customer.email)
       } catch (error) {
         this.orderError = error
       } finally {
-        this.loadingOrder = false
+        this.loadingOrder = false        
       }
     }
   },

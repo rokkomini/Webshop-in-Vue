@@ -52,7 +52,7 @@ export default {
     cart: {
       type: Object,
     },
-    error: Object,
+    error: String,
     quantity: Number,
   },
   components: { CartItem },

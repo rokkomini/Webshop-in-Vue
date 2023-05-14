@@ -8,6 +8,7 @@
         :quantity="this.cartStore.quantity"
         @remove-one="this.cartStore.removeQuantity($event)"
         @add-one="this.cartStore.addQuantity($event)"
+        @close-cart="closeCart"
       />
       <TopHeader 
         @toggle-cart="toggleCart" 
@@ -18,7 +19,11 @@
       <div class="width-wrapper">
         <h1>Search results for: {{ query }}</h1>
         <div class="flex">
-          <ProductList v-if="query" :products="this.productStore.products" />
+          <ProductList 
+            v-if="query" 
+            :products="this.productStore.products" 
+            @load-cart="this.cartStore.getCart"
+          />
         </div>
       </div>
   </div>
@@ -79,14 +84,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page-wrapper {
+// .page-wrapper {
   
-  padding-bottom: 30px;
-h1 {
-  color: #808080;
-}
-  .flex {
-    justify-content: center;
-  }
-}
+//   padding-bottom: 30px;
+// h1 {
+//   color: #808080;
+// }
+//   .flex {
+//     justify-content: center;
+//   }
+// }
 </style>

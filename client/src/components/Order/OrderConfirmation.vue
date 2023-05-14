@@ -2,7 +2,6 @@
   <div>
     <transition>
       <div v-if="order" v-show="showModal" class="modal-mask">
-        hello modal
         <div class="modal-wrapper">
           <div class="modal-container">
             <div class="modal-header">
@@ -20,7 +19,7 @@
                 <CustomerSummary :customer="order.customer"/>
               </div>
             </div>
-            <div class="modal-footer">
+            <div class="flex center modal-footer">
               <button class="button primary" @click="$emit('close')">
                 Got it!
               </button>
@@ -66,8 +65,6 @@ export default {
   display: table;
   transition: opacity 0.3s ease;
 }
-
-.modal-wrapper {}
 
 .modal-container {
   width: 500px;

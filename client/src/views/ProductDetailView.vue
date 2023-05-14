@@ -10,6 +10,7 @@
       @add-one="this.cartStore.addQuantity($event)"
       @delete-cart="this.cartStore.deleteCart"
       @delete-item="this.cartStore.deleteCartItem($event)"
+      @close-cart="closeCart"
     />
       <TopHeader @toggle-cart="toggleCart" :showCartButton="showCartButton" :quantity="this.cartStore.quantity"/>
     <div class="flex width-wrapper">
