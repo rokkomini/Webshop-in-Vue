@@ -84,8 +84,35 @@ export const useCartStore = defineStore({
       }
     },
 
-    async countItems() { 
+    async deleteCart() { 
+      this.cart = {}
+      this.loadingCart = true
+      try {
+        await fetch(`${URL}/delete-cart`, {
+          method: 'DELETE',
+        })
+        this.getCart()
+      } catch (error) {
+        this.cartError = error
+      } finally {
+        this.loadingCart = false
+      }
+    },
 
+    async deleteCartItem(cartItem) {
+      this.loadingCart = true
+      try {
+        await fetch(`${URL}/delete-item`, {
+          method: 'DELETE',
+          headers: {'Content-Type': 'application/json;charset=utf-8'},
+          body: JSON.stringify({ cartItem })
+        })
+        this.getCart()
+      } catch (error) {
+        this.cartError = error
+      } finally {
+        this.loadingCart = false
+      }
     }
   }
 })

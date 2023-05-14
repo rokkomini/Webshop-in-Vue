@@ -20,6 +20,7 @@
           :quantity="this.cartStore.quantity"
           @remove-one="this.cartStore.removeQuantity($event)"
           @add-one="this.cartStore.addQuantity($event)"
+          @delete-item="this.cartStore.deleteCartItem($event)"
         />
         <CheckoutForm
           @submit-order="this.checkoutStore.saveOrder($event, this.cartStore.cart)"

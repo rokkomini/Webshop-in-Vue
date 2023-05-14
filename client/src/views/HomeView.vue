@@ -7,7 +7,10 @@
       :error="cartError" 
       :quantity="quantity"
       @remove-one="removeQuantity($event)"
-      @add-one="addQuantity($event)"/>
+      @add-one="addQuantity($event)"
+      @delete-cart="deleteCart"
+      @delete-item="deleteCartItem($event)"
+    />    
     <TopHeader 
       @toggle-cart="toggleCart" 
       :showCartButton="showCartButton" 
@@ -27,7 +30,6 @@ import TopHeader from '../components/Header/TopHeader.vue';
 import Cart from '../components/Cart/Cart.vue';
 import StartHeroVue from '../components/StartHero.vue';
 import ProductList from '../components/Product/ProductList.vue';
-// import { RouterLink } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useProductStore } from '../stores/getProducts';
 import { useCartStore } from '../stores/cart';
@@ -36,7 +38,7 @@ import { useCartStore } from '../stores/cart';
 const { products, productError } = storeToRefs(useProductStore());
 const { cart, quantity, cartError } = storeToRefs(useCartStore());
 const { getProducts } = useProductStore();
-const { getCart, removeQuantity, addQuantity } = useCartStore();
+const { getCart, removeQuantity, addQuantity, deleteCart, deleteCartItem } = useCartStore();
 
 getProducts();
 getCart();
