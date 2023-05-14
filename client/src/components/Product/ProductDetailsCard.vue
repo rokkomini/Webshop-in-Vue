@@ -1,5 +1,5 @@
 <template>
-  <div class="flex product-card-wrapper">
+  <div class="flex product-details-wrapper">
     <h1 class="show-medium"> {{ product.name }} </h1>
     <h1 class="show-small"> {{ product.name }} </h1>
     <div class="product-img" v-if="!selectedOption">
@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <div class="product-info">
+    <div class="product-summary">
       <h1 class="show-large"> {{ product.name }} </h1>
       <p>By: {{ product.brand }}</p>
       <p> {{ product.description }}</p>
@@ -46,45 +46,6 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
-// .product-card-wrapper {
-//   height: auto;
-//   width: 100%;
-
-//   .product-img img {
-//     width: 100%;
-//     height: 100%;
-//     object-fit: cover;
-//   }
-
-//   .radio-options {
-//     gap: 20px;
-//   }
-
-//   [type=radio] { 
-//   position: absolute;
-//   opacity: 0;
-//   width: 0;
-//   height: 0;
-// }
-
-// /* IMAGE STYLES */
-// [type=radio] + img {
-//   cursor: pointer;
-// }
-
-// /* CHECKED STYLES */
-// [type=radio]:checked + img {
-//   outline: 2px solid grey;
-
-// }
-
-//   .product-info {
-//     padding: 15px;
-//     width: 50%;
-//   }
-// }
-</style>
 
 <script>
 const URL = 'http://localhost:3005'

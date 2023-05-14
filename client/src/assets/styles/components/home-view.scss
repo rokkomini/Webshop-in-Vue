@@ -1,0 +1,33 @@
+.hero-section {
+  background-image: url('/src/assets/images/rue-s-white-silc.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  width: 100%;
+
+  .flex {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+
+    h1 {
+      font-size: 2rem;
+      color: white;
+      text-shadow: 3px 3px 3px #e79bee;
+
+      @include medium-breakpoint {
+        font-size: 4rem;
+      }
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: #FAF4B7;
+      text-shadow: 3px 3px 3px #808080;
+
+      @include medium-breakpoint {
+        font-size: 2rem;
+      }
+    }
+  }
+}

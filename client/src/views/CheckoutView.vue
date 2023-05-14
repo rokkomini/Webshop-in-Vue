@@ -5,7 +5,7 @@
     
     <div class="width-wrapper">
       <h1>Checkout your order</h1>
-      <div class="flex">
+      <div class="flex space-between">
         <div v-show="loadingOrder" class="loading checkout">
         </div>
         <OrderConfirmation
@@ -84,19 +84,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.page-wrapper {
-  padding: 30px; 
-
-  .flex {
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .loading.checkout {
-    height: 200px;
-    width: 200px;
-  }
-}
-</style>

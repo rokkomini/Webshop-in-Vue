@@ -10,7 +10,7 @@
     </router-link>
 
     <div class="product-info">
-      <div class="flex-row center">
+      <div class="flex center">
         <p class="name">
           <router-link :to="{ name: 'ProductDetail', params: { slug: product.slug } }">
             {{ product.name }}

@@ -7,7 +7,13 @@
         </div>
       <div v-if="cart">
         <div v-for="product in cart.products" :key="product.optionId">
-          <CartItem :cartItem="product" @remove-one="removeOne" @add-one="addOne" @delete-item="deleteItem"/>
+          <CartItem 
+            :cartItem="product"
+            :flexRow="true" 
+            @remove-one="removeOne" 
+            @add-one="addOne" 
+            @delete-item="deleteItem"
+          />
         </div>
       </div>
 
@@ -77,7 +83,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<!-- <style lang="scss" scoped>
 .side-cart {
   // position: fixed;
   // top: 0;
@@ -116,4 +122,4 @@ export default {
 
 
 }
-</style>
+</style> -->

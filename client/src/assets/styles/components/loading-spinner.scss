@@ -12,6 +12,11 @@
   // background-color: rgba(0, 0, 0, 0.5);
   animation: spin 1s ease-in-out infinite;
   -webkit-animation: spin 1s ease-in-out infinite;
+
+  &.checkout {
+    height: 200px;
+    width: 200px;
+  }
 }
 
 @keyframes spin {

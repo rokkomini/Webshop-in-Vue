@@ -1,0 +1,35 @@
+.checkoutform-wrapper {
+  padding: 1rem;
+  margin: 1rem;
+  width: 100%;
+  width: 550px;
+  flex-direction: column;
+
+  .form-address {
+    flex-wrap: wrap;
+  }
+
+  .form-buttons {
+    justify-content: flex-end;
+    margin-top: 1rem;
+    gap: 20px
+  }
+}
+
+.form-control {
+  // margin: 10px 0;
+
+  label {
+    display: block;
+  }
+
+  input {
+    // max-width: inherit;
+    height: 20px;
+    margin: 5px;
+    padding: 3px 7px;
+    font-size: 17px;
+  }
+
+
+}
