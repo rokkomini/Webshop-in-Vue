@@ -1,19 +1,26 @@
+//Rules
+@import './rules/breakpoints.scss';
+@import './rules/layout.scss';
+@import './rules/colors.scss';
+
+// Components
+@import './components/cart.scss';
+@import './components/product-card.scss';
+@import './components/product-list.scss';
 // SCSS SYNTAX
-$primary-color: #CDF0EA;
-$secondary-color: #F9F9F9;
-$third-color: #e79bee;
-$fourth-color: #FAF4B7;
-$primary-font-color: #808080;
+// $primary-color: #CDF0EA;
+// $secondary-color: #F9F9F9;
+// $third-color: #e79bee;
+// $fourth-color: #FAF4B7;
+// $primary-font-color: #808080;
+
+// $small-breakpoint: 'width: 600px';
+// $large-breakpoint: width: 1200px;
 
 body {
   // font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0;
   background-color: $secondary-color ;
-}
-
-.page-wrapper {
-  width: 1200px;
-  margin: 0 auto;
 }
 
 .flex {

@@ -1,6 +1,6 @@
 <template>
   <footer class="pink-wrapper">
-    <div class="page-wrapper flex">
+    <div class="width-wrapper flex">
       <h1>@Made by Mika</h1>
       <h3>Created by <a href="https://github.com/rokkomini">me</a> with Vue.js, NodeJs, Express</h3>
         <div>

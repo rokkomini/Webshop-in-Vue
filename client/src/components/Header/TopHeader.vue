@@ -54,9 +54,6 @@ export default {
 
 <style lang="scss" scoped>
 
-// header {
-//   position: fixed;
-// }
 .blue-wrapper {
   height: 40px;
   padding: 20px;
@@ -123,10 +120,6 @@ export default {
     position: absolute;
     font-size: 1.5rem;
   }
-
-
-
-
 }
 
 </style>

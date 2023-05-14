@@ -1,6 +1,6 @@
 <template>
   <section class="hero-section ">
-    <div class="page-wrapper flex">
+    <div class="width-wrapper flex">
       <h1>Welcome to Itsy Bitsy</h1>
       <h2>Some itsy bitsy products</h2>
     </div>

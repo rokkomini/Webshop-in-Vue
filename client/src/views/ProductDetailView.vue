@@ -12,7 +12,7 @@
       @delete-item="this.cartStore.deleteCartItem($event)"
     />
       <TopHeader @toggle-cart="toggleCart" :showCartButton="showCartButton" :quantity="this.cartStore.quantity"/>
-    <div class="flex page-wrapper">
+    <div class="flex width-wrapper">
       <ProductDetailsCard v-if="productItem" :product="this.productStore.product" @load-cart="this.cartStore.getCart"/>
     </div>
   </div>

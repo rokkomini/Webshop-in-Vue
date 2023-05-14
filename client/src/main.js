@@ -10,7 +10,7 @@ import { faCartShopping, faHouse, faMagnifyingGlass, faCartPlus, faTrash } from 
 import App from './App.vue'
 import router from './router'
 
-import './assets/styles/layout.scss'
+import './assets/styles/style.scss'
 
 const app = createApp(App)
 /* add the icons in use in project here */

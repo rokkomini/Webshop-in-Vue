@@ -16,7 +16,7 @@
       :showCartButton="showCartButton" 
       :quantity="quantity"/>
     <StartHeroVue />
-    <div class="page-wrapper">
+    <div class="width-wrapper home-view">
       <p v-if="productError">{{ productError.message }}</p>
       <div v-if="products">
         <ProductList :products="products" @load-cart="getCart()"/>
@@ -79,9 +79,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page-wrapper {
-  justify-content: space-between;
-  margin-top: -50px;
-  padding-bottom: 30px;
-}
+// .width-wrapper {
+//   // justify-content: space-between;
+//   margin-top: -50px;
+//   padding-bottom: 30px;
+// }
 </style>

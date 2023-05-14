@@ -1,0 +1,60 @@
+.product-card-wrapper {
+  height: auto;
+  width: 300px;
+  border: 1px solid #ccc;
+  color: $primary-font-color;
+
+  .product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .product-info {
+    padding: 15px;
+
+      .name {
+        font-weight:700;
+
+        a {
+          color: $primary-font-color;         
+        }
+      }
+
+      .brand {
+        font-weight: 300;
+        color: #808080;
+    }
+
+    select {
+      background: $fourth-color;
+      width: 200px;
+      padding: 10px;
+      border-radius: 3px;
+      border: $secondary-color solid 2px;
+      background: none;
+      cursor: pointer;
+      &:focus {
+        outline: none;
+      }
+  
+      option {
+        color: $primary-font-color;
+        border-bottom: solid 1px $secondary-color;
+        border-radius: 3px;
+        padding: 10px;
+        min-height: 20px;
+        cursor: pointer;
+      }
+    }
+
+      .purchase {
+        align-items: center;
+
+        svg {
+          color: pink;
+          font-size: 25px;
+        }
+      }
+    }
+  }

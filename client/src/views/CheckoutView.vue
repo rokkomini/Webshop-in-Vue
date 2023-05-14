@@ -3,7 +3,7 @@
     <div id="overlay"></div>
     <TopHeader :showCartButton="false" />
     
-    <div class="page-wrapper">
+    <div class="width-wrapper">
       <h1>Checkout your order</h1>
       <div class="flex">
         <div v-show="loadingOrder" class="loading checkout">

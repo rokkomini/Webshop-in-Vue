@@ -15,7 +15,7 @@
         :quantity="this.cartStore.quantity"
         @search-query="searchProducts($event)"
       />
-      <div class="page-wrapper">
+      <div class="width-wrapper">
         <h1>Search results for: {{ query }}</h1>
         <div class="flex">
           <ProductList v-if="query" :products="this.productStore.products" />
