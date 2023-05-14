@@ -39,8 +39,14 @@ const saveNewCart = async (cart) => {
   return await newCart.save();
 }
 
-const deleteCart = async (cart) => { 
-  return await CartModel.deleteOne(cart).exec();
+const deleteAllInCart = async (cartId) => {
+  console.log('delete all in cart model', cartId); 
+  return await CartModel.deleteOne({ _id: cartId }).exec();
 }
 
-module.exports = { loadOneCart, saveNewCart, deleteCart, findCartItem }; 
+const deleteItemFromCart = async (item) => {
+  console.log('delete item from cart model', item);
+  return await CartModel.deleteOne(item).exec();
+}
+
+module.exports = { loadOneCart, saveNewCart, deleteAllInCart, findCartItem, deleteItemFromCart }; 

@@ -1,4 +1,4 @@
-const {loadOneCart, saveNewCart, deleteCart, findCartItem} = require('../models/cart');
+const { loadOneCart, saveNewCart, findCartItem, deleteAllInCart, deleteItemFromCart } = require('../models/cart');
 const { loadProductById } = require('../models/products');
 
 const loadCart = async () => {
@@ -111,4 +111,38 @@ const removeInCart = async (itemId) => {
   }
 }
 
-module.exports = { loadCart, saveCart, addInCart, removeInCart };
+const deleteCart = async () => {
+  try {
+    const cart = await loadCart();
+    if (!cart) {
+      throw new Error('No cart to delete not found');
+    }
+    await deleteAllInCart(cart.id);
+  } catch (error) {
+    throw new Error('Error deleting cart');
+  } finally { 
+    return await loadOneCart();
+  }
+}
+
+const deleteCartItem = async (itemId) => {
+  try {
+    const cart = await loadCart();
+    if (!cart) {
+      throw new Error('Cart not found');
+    }
+    let itemIndex = cart.products.findIndex((p) => p.id == itemId);
+    if (itemIndex > -1) {
+      let cartItem = cart.products[itemIndex];
+      cart.total -= cartItem.price;
+      cart.products.splice(itemIndex, 1);
+    }
+    await saveNewCart(cart);
+  } catch (error) { 
+    throw new Error('Error deleting cart item');
+  } finally {     
+    return await loadOneCart();
+  }
+}
+
+module.exports = { loadCart, saveCart, addInCart, removeInCart, deleteCart, deleteCartItem, deleteCart };

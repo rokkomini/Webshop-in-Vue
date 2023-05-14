@@ -3,7 +3,7 @@
     <p v-if="error">{{ error.message }}</p>
       <div v-if="cart">
         <div v-for="product in cart.products" :key="product.optionId">
-          <CartItem :cartItem="product" @remove-one="removeOne" @add-one="addOne"/>
+          <CartItem :cartItem="product" @remove-one="removeOne" @add-one="addOne" @delete-item="deleteItem"/>
         </div>
       </div>
 
@@ -47,7 +47,10 @@ export default {
       },
       addOne(id) {
         this.$emit('add-one', id);
-      }
+      },
+      deleteItem(id) {
+        this.$emit('delete-item', id);
+      },
     },
 }
 </script>

@@ -7,7 +7,10 @@
       :error="this.cartStore.cartError" 
       :quantity="this.cartStore.quantity"
       @remove-one="this.cartStore.removeQuantity($event)"
-      @add-one="this.cartStore.addQuantity($event)"/>
+      @add-one="this.cartStore.addQuantity($event)"
+      @delete-cart="this.cartStore.deleteCart"
+      @delete-item="this.cartStore.deleteCartItem($event)"
+    />
       <TopHeader @toggle-cart="toggleCart" :showCartButton="showCartButton" :quantity="this.cartStore.quantity"/>
     <div class="flex page-wrapper">
       <ProductDetailsCard v-if="productItem" :product="this.productStore.product" @load-cart="this.cartStore.getCart"/>
