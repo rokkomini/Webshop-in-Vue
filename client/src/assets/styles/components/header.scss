@@ -61,18 +61,18 @@ header {
   }
 }
 
+.search-section {
+  display: none;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
 
-
-@include large-breakpoint {
-  .search-section {
+  @include large-breakpoint {
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 10px;
+  }
 
-    svg {
-      position: absolute;
-      font-size: 1.5rem;
-    }
+  svg {
+    position: absolute;
+    font-size: 1.5rem;
   }
 }

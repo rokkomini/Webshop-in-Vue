@@ -1,5 +1,7 @@
 <template>
   <div class="flex product-card-wrapper">
+    <h1 class="show-medium"> {{ product.name }} </h1>
+    <h1 class="show-small"> {{ product.name }} </h1>
     <div class="product-img" v-if="!selectedOption">
       <img :src="product.mainImage?.url" :alt="product.mainImage?.alt">
     </div>
@@ -11,14 +13,14 @@
     </div>
 
     <div class="product-info">
-      <h1> {{ product.name }} </h1>
+      <h1 class="show-large"> {{ product.name }} </h1>
       <p>By: {{ product.brand }}</p>
       <p> {{ product.description }}</p>
       <h3>{{ product.price }} kr</h3>
       
       <div v-if="product.options?.color.length > 0">
         <h4>Choose color</h4>
-        <div class="flex radio-options">
+        <div class="flex-row radio-options">
           <div v-for="option in product.options.color" v-bind:key="option._id">
               <label :for="option._id">
                 <input type="radio" :id="option._id" :value="option._id" v-model="selectedOption" />
@@ -30,7 +32,7 @@
 
       <div v-if="product.options?.size.length > 0">
         <h4>Choose size</h4>
-        <div class="flex radio-options">
+        <div class="flex-row radio-options">
           <div v-for="option in product.options.color" v-bind:key="option._id">
               <label :for="option._id">
                 <input type="radio" :id="option._id" :value="option._id" v-model="selectedOption" />
@@ -45,43 +47,43 @@
 </template>
 
 <style lang="scss" scoped>
-.product-card-wrapper {
-  height: auto;
-  width: 100%;
+// .product-card-wrapper {
+//   height: auto;
+//   width: 100%;
 
-  .product-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+//   .product-img img {
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//   }
 
-  .radio-options {
-    gap: 20px;
-  }
+//   .radio-options {
+//     gap: 20px;
+//   }
 
-  [type=radio] { 
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
+//   [type=radio] { 
+//   position: absolute;
+//   opacity: 0;
+//   width: 0;
+//   height: 0;
+// }
 
-/* IMAGE STYLES */
-[type=radio] + img {
-  cursor: pointer;
-}
+// /* IMAGE STYLES */
+// [type=radio] + img {
+//   cursor: pointer;
+// }
 
-/* CHECKED STYLES */
-[type=radio]:checked + img {
-  outline: 2px solid grey;
+// /* CHECKED STYLES */
+// [type=radio]:checked + img {
+//   outline: 2px solid grey;
 
-}
+// }
 
-  .product-info {
-    padding: 15px;
-    width: 50%;
-  }
-}
+//   .product-info {
+//     padding: 15px;
+//     width: 50%;
+//   }
+// }
 </style>
 
 <script>
