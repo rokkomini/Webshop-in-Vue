@@ -1,13 +1,14 @@
 <template>
   <div>
     <div id="overlay" @click="closeCart"></div>
-    <Cart 
+    <CartDrawer 
       :showCart="showCart" 
       :cart="cart" 
       :error="cartError" 
       :quantity="quantity"
       @remove-one="removeQuantity($event)"
       @add-one="addQuantity($event)"
+      @close-cart="closeCart"
       @delete-cart="deleteCart"
       @delete-item="deleteCartItem($event)"
     />    
@@ -27,7 +28,7 @@
 
 <script setup>
 import TopHeader from '../components/Header/TopHeader.vue';
-import Cart from '../components/Cart/Cart.vue';
+import CartDrawer from '../components/Cart/CartDrawer.vue';
 import StartHeroVue from '../components/StartHero.vue';
 import ProductList from '../components/Product/ProductList.vue';
 import { storeToRefs } from 'pinia'
@@ -49,7 +50,7 @@ getCart();
 export default {
   components: {
     TopHeader,
-    Cart,
+    CartDrawer,
     ProductList
   },
   data() {
@@ -77,11 +78,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-// .width-wrapper {
-//   // justify-content: space-between;
-//   margin-top: -50px;
-//   padding-bottom: 30px;
-// }
-</style>

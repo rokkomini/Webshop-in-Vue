@@ -1,15 +1,18 @@
 <template>
   <Transition>
     <div :class="[showCart ? 'show' : 'hide', 'side-cart']">
-      <p v-if="error">{{ error.message }}</p>
+        <p v-if="error">{{ error.message }}</p>
+        <div class="flex end">
+          <font-awesome-icon icon="fa-solid fa-xmark" @click="$emit('close-cart')"/>
+        </div>
       <div v-if="cart">
         <div v-for="product in cart.products" :key="product.optionId">
           <CartItem :cartItem="product" @remove-one="removeOne" @add-one="addOne" @delete-item="deleteItem"/>
         </div>
       </div>
 
-      <div class="flex cart-wrapper">
-        <div class="flex cart-summary" v-if="quantity > 0">
+      <div class="flex column cart-wrapper">
+        <div class="flex column end" v-if="quantity > 0">
           <table>
             <tr>
               <td>Quantity:</td>
@@ -21,7 +24,7 @@
             </tr>
           </table>
         </div>
-        <div v-if="quantity > 0" class="flex cart-buttons">
+        <div v-if="quantity > 0" class="flex-row center cart-buttons">
           <RouterLink class="button primary" to="/checkout">Gå till kassan</RouterLink>
           <button class="button" @click="$emit('delete-cart')">Delete Cart</button>
         </div>
@@ -76,14 +79,14 @@ export default {
 
 <style lang="scss" scoped>
 .side-cart {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 450px;
-  height: 100vh;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  // position: fixed;
+  // top: 0;
+  // right: 0;
+  // width: 450px;
+  // height: 100vh;
+  // background-color: #fff;
+  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  // z-index: 999;
 
   .cart-wrapper {
     flex-direction: column;
@@ -109,7 +112,6 @@ export default {
   .cart-buttons {
     gap: 10px;
     justify-content: center;
-    bottom: 0;
   }
 
 

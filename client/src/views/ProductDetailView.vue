@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="overlay" @click="closeCart"></div>
-    <Cart 
+    <CartDrawer 
       :showCart="showCart" 
       :cart="this.cartStore.cart" 
       :error="this.cartStore.cartError" 
@@ -20,7 +20,7 @@
 
 <script>
 import TopHeader from '../components/Header/TopHeader.vue';
-import Cart from '../components/Cart/Cart.vue';
+import CartDrawer from '../components/Cart/CartDrawer.vue';
 // import ProductCard from '../components/Product/ProductCard.vue';
 import { useProductStore } from '../stores/getProducts';
 import { useCartStore } from '../stores/cart';
@@ -38,7 +38,7 @@ export default {
   },
   components: {
     TopHeader,
-    Cart,
+    CartDrawer,
     // ProductCard,
     ProductDetailsCard,
   },

@@ -3,7 +3,7 @@
     <div class="flex-row space-between width-wrapper">
       <div class="flex-row left-header">
         <RouterLink to="/"><font-awesome-icon icon="fa-solid fa-house" /></RouterLink>
-        <div class="show-medium search-section">
+        <div class="show-large search-section">
           <input
             class="search input"
             type="text"

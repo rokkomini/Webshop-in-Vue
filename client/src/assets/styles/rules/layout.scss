@@ -28,6 +28,7 @@
   }
   &.end {
     justify-content: flex-end;
+    align-items: flex-end;
   }
 }
 
@@ -49,6 +50,7 @@
 
   &.center {
     justify-content: center;
+    align-items: center;
   }
   &.end {
     justify-content: flex-end;

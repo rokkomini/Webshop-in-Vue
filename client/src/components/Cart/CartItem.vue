@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex cart-item">
-      <div class="flex item-info">
+      <div class="flex-row item-info">
         <div>
           <img :src="cartItem.image.url" :alt="cartItem.image.alt">
         </div>
@@ -41,8 +41,6 @@
 </template>
 
 <script>
-import { RouterLink } from 'vue-router'
-
 export default {
   name: 'CartItem',
   props: {
@@ -65,40 +63,40 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.cart-item {
-  padding: 1rem;
-  border-bottom: 1px solid #000;
+// .cart-item {
+//   padding: 1rem;
+//   border-bottom: 1px solid #000;
 
-  .item-info {
-    width: 100%;
-    align-items: center;
+//   .item-info {
+//     width: 100%;
+//     // align-items: center;
 
-    table {
-      width: 100%;
-      text-align: left;
-    }
+//     table {
+//       width: 100%;
+//       text-align: left;
+//     }
 
-    svg {
-      cursor: pointer;
-      color: #e79bee;
-      transition: all 0.3s ease-in-out;
+//     svg {
+//       cursor: pointer;
+//       color: #e79bee;
+//       transition: all 0.3s ease-in-out;
 
-      &:hover {
-        color: #CDF0EA;
-        transition: all 0.3s ease-in-out;
-      }
-    }
-  }
+//       &:hover {
+//         color: #CDF0EA;
+//         transition: all 0.3s ease-in-out;
+//       }
+//     }
+//   }
 
-  img {
-    width: 100px;
-    height: 100px;
-  }
+//   img {
+//     width: 100px;
+//     height: 100px;
+//   }
 
-  .button.secondary {
-    padding: 3px 10px;
-    font-size: 20px;
-    font-weight: 800;
-  }
-}
+//   .button.secondary {
+//     padding: 3px 10px;
+//     font-size: 20px;
+//     font-weight: 800;
+//   }
+// }
 </style>
