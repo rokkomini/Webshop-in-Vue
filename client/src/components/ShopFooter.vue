@@ -10,22 +10,3 @@
     </div>
   </footer>
 </template>
-
-<style lang="scss" scoped>
-footer {
-  // height: 300px;
-  // width: 100%;
-
-  // .page-wrapper.flex {
-  //   flex-direction: column;
-  //   justify-content: center;
-  //   align-items: center;
-  //   height: 100%;
-  //   width: 100%;
-  // }
-
-  // a {
-  //   color: #FAF4B7;
-  // }
-}
-</style>

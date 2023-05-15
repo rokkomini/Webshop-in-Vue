@@ -40,7 +40,6 @@ export default {
   components: {
     TopHeader,
     CartDrawer,
-    // ProductCard,
     ProductDetailsCard,
   },
   setup() {
@@ -71,9 +70,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.flex.page-wrapper {
-  justify-content: center;
-}
-</style>

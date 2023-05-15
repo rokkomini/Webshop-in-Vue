@@ -16,10 +16,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.yellow-wrapper {
-  padding: 1rem;
-  border: 1px solid black;
-}
-</style>

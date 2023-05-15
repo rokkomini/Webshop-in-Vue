@@ -73,8 +73,7 @@ export default {
     closeCart() {
       this.showCart = false;
       document.getElementById("overlay").style.display = "none";
-    },
-    
+    },   
   }
 }
 </script>
