@@ -36,14 +36,14 @@ export const useCartStore = defineStore({
           headers: {'Content-Type': 'application/json;charset=utf-8'},
           body: JSON.stringify({ cartItem }) 
         })
-        this.getCart()       
-        
+        this.getCart()               
       } catch (error) {
         this.cartError = error
       } finally {
         this.loadingCart = false
       }
     },
+    
     async addQuantity(cartItem) {
       this.loadingCart = true
       try {
@@ -61,14 +61,17 @@ export const useCartStore = defineStore({
     },
 
     async addToCart(product) {
+      console.log('store add to cart', product)
       this.cart = {}
       this.loadingCart = true      
       try {
         const response = await fetch(`${URL}/add-to-cart`, {
           method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(product)
         })
-        await response.json()
+        await response
+        this.getCart()
       } catch (error) {
         this.cartError = error
       } finally {
