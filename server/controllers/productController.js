@@ -18,7 +18,6 @@ const loadSingleProduct = async(slug) => {
 }
 
 const getSearchResults = async(query) => {
-  console.log('query in controller: ', query)
   const searchResults = await searchProducts(query);
   if (searchResults.length < 1) {
     throw new Error('No matching products found');

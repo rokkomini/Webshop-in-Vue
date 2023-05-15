@@ -4,16 +4,6 @@
   color: $primary-font-color;
   width: 100%;
 
-  // @include medium-breakpoint {
-  //   // width: auto;
-  //   padding: 10px 30px;
-  // }
-
-  // @include large-breakpoint {
-  //   // width: 100%;
-  //   padding: 10 2px;
-  // }
-  
   span {
     cursor: pointer;
   }
@@ -34,7 +24,6 @@
       width: 100%;
     }
   }
-
 
     a {
       color: #808080;

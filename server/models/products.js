@@ -41,11 +41,9 @@ const saveNewProduct = async (product) => {
 }
 
 const searchProducts = async (query) => {
-  console.log('query in model: ', query) 
   return await ProductModel.find({
     $or: [
       { name: RegExp(query, "i") },
-      // { name: { $regex: `/${query}/gi` } },
       { category: { $elemMatch: { $eq: query }} },
       { brand: RegExp(query, "i") }
     ]

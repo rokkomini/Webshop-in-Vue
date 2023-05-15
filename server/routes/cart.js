@@ -13,7 +13,6 @@ cartRouter.get('/get-cart', async (req, res) => {
 })
 
 cartRouter.post('/add-to-cart', async (req, res) => {
-  console.log('server add to cart', req.body)
   const product = req.body;
   const productId = product.productId;
   const optionId = product.optionId;

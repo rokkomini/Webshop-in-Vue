@@ -61,7 +61,6 @@ export const useCartStore = defineStore({
     },
 
     async addToCart(product) {
-      console.log('store add quantity', URL)
       this.cart = {}
       this.loadingCart = true      
       try {

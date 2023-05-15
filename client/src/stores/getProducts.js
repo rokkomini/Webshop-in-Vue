@@ -32,11 +32,9 @@ export const useProductStore = defineStore({
       try {
         this.product = await fetch(`${URL}/product/${slug}`).then((res) => res.json())
       } catch (error) {
-        // this.productError = error
-        console.log('error', error)
+        this.productError = error
       } finally {
         this.loadingProducts = false
-        console.log('finally')
       }
     },
 
