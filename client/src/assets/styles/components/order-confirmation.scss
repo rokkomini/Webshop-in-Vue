@@ -11,15 +11,20 @@
 }
 
 .modal-container {
-  width: 500px;
+  width: auto;
   height: 100%;
   margin: 0px auto;
-  padding: 20px 30px;
+  padding: 10px 20px;
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
   font-family: Helvetica, Arial, sans-serif;
+  
+  @include large-breakpoint {
+    width: 500px;
+    padding: 20px 30px;
+  }
 }
 
 .modal-header h3 {
@@ -32,6 +37,13 @@
 
   .cart-item {
     border-bottom: none;
+
+    table {
+      width: auto;
+      @include large-breakpoint {
+        width: 100%;
+      }
+    }
   }
 
   .customer-box {
