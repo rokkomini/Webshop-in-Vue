@@ -20,7 +20,7 @@
     <div class="width-wrapper home-view">
       <p v-if="productError">{{ productError.message }}</p>
       <div v-if="products">
-        <ProductList :products="products" @load-cart="getCart()"/>
+        <ProductList :products="products" @add-to-cart="addToCart($event)"/>
       </div>
     </div>
   </div>
@@ -39,7 +39,7 @@ import { useCartStore } from '../stores/cart';
 const { products, productError } = storeToRefs(useProductStore());
 const { cart, quantity, cartError } = storeToRefs(useCartStore());
 const { getProducts } = useProductStore();
-const { getCart, removeQuantity, addQuantity, deleteCart, deleteCartItem } = useCartStore();
+const { getCart, addToCart, removeQuantity, addQuantity, deleteCart, deleteCartItem } = useCartStore();
 
 getProducts();
 getCart();

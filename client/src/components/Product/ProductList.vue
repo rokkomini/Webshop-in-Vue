@@ -4,7 +4,7 @@
         v-for="product in products" 
         :key="product._id" 
         :product="product" 
-        @load-cart="$emit('load-cart')"
+        @add-to-cart="this.$emit('add-to-cart', $event)"
       />
   </div>
 </template>
