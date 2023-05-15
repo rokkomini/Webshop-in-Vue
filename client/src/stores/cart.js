@@ -36,21 +36,21 @@ export const useCartStore = defineStore({
           headers: {'Content-Type': 'application/json;charset=utf-8'},
           body: JSON.stringify({ cartItem }) 
         })
-        this.getCart()       
-        
+        this.getCart()               
       } catch (error) {
         this.cartError = error
       } finally {
         this.loadingCart = false
       }
     },
+    
     async addQuantity(cartItem) {
       this.loadingCart = true
       try {
         await fetch(`${URL}/add-quantity`, {
           method: 'PATCH',
           headers: {'Content-Type': 'application/json;charset=utf-8'},
-          body: JSON.stringify(cartItem)
+          body: JSON.stringify({ cartItem })
         })
         this.getCart()       
       } catch (error) {

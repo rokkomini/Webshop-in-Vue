@@ -23,6 +23,6 @@ export default {
   components: {
     ProductCard
   },
-  emits: ['add-to-cart', 'load-cart'],
+  emits: ['add-to-cart'],
 }
 </script>
