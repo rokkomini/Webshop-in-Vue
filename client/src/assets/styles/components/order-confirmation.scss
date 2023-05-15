@@ -29,6 +29,14 @@
 
 .modal-body {
   margin: 20px 0;
+
+  .cart-item {
+    border-bottom: none;
+  }
+
+  .customer-box {
+    padding: 20px;
+  }  
 }
 
 .modal-enter {

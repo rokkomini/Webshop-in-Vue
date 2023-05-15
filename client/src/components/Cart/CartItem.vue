@@ -5,8 +5,6 @@
         <div>
           <img :src="cartItem.image.url" :alt="cartItem.image.alt">
         </div>
-
-
           <table>
             <tr>
               <th>{{ cartItem.productName }}</th>
