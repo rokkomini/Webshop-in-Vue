@@ -1,6 +1,6 @@
 <template>
   <footer class="pink-wrapper">
-    <div class="page-wrapper flex">
+    <div class="width-wrapper flex column">
       <h1>@Made by Mika</h1>
       <h3>Created by <a href="https://github.com/rokkomini">me</a> with Vue.js, NodeJs, Express</h3>
         <div>
@@ -10,22 +10,3 @@
     </div>
   </footer>
 </template>
-
-<style lang="scss" scoped>
-footer {
-  height: 300px;
-  width: 100%;
-
-  .page-wrapper.flex {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-  }
-
-  a {
-    color: #FAF4B7;
-  }
-}
-</style>

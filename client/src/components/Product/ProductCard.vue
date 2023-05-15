@@ -10,7 +10,7 @@
     </router-link>
 
     <div class="product-info">
-      <div class="flex">
+      <div class="flex center">
         <p class="name">
           <router-link :to="{ name: 'ProductDetail', params: { slug: product.slug } }">
             {{ product.name }}
@@ -18,10 +18,7 @@
         </p>
         <p class="brand">{{ product.brand }}</p>
       </div>
-
-
-      <div class="flex selected">
-
+      <div class="flex column">
         <select v-if="product.options.size.length > 0" @change="updateOption($event)">
           <option v-for="option in product.options.size" :value="option.value" v-bind:key="option.id" :option="option">
             {{ option.name }}
@@ -37,10 +34,9 @@
         </select>
       </div>
 
-      <div class="flex purchase">
+      <div class="flex center">
         <p>{{ product.price }} kr</p>
         <button class="button" @click="addToCart">Add to cart</button>
-        <!-- <font-awesome-icon icon="fa-solid fa-cart-plus"  @click="addToCart"/> -->
       </div>
     </div>
   </div>
@@ -105,61 +101,3 @@ export default {
 }
 
 </script>
-
-<style lang="scss" scoped>
-.product-card-wrapper {
-  height: auto;
-  width: 300px;
-  border: 1px solid #ccc;
-
-  .product-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .product-info {
-    padding: 15px;
-
-    .flex {
-      gap: 10px;
-      justify-content: center;
-
-      .name {
-        font-weight: 700;
-
-        a {
-          color: black;
-        }
-      }
-
-      .brand {
-        font-weight: 300;
-        color: #808080;
-      }
-    }
-
-    .selected {
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      padding-bottom: 15px;
-
-      .color-dot {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-      }
-
-      .purchase {
-        align-items: center;
-
-        svg {
-          color: pink;
-          font-size: 25px;
-        }
-      }
-    }
-  }
-}
-</style>

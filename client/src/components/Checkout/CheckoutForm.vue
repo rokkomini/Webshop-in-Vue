@@ -44,7 +44,7 @@
 
       
         Choose form of payment: {{ payment }}
-      <div class="flex">
+      <div class="flex-row">
         <input type="radio" id="card" value="card" v-model="payment" />
         <img src="../../assets/credit-card-svgrepo-com.svg" alt="card-icon" class="svg-icon">
 
@@ -92,7 +92,7 @@ export default {
         paymentMethod: this.payment,
       }
 
-      this.$emit('submit-order', customer, this.cart)
+      this.$emit('submit-order', customer, this.cart)     
       this.$emit('get-order', customer.email)
       this.$emit('show-confirmation')
 
@@ -110,41 +110,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.checkoutform-wrapper {
-  padding: 1rem;
-  margin: 1rem;
-  width: 100%;
-  width: 550px;
-  flex-direction: column;
-
-  .form-address {
-    flex-wrap: wrap;
-  }
-
-  .form-buttons {
-    justify-content: flex-end;
-    margin-top: 1rem;
-    gap: 20px
-  }
-}
-
-.form-control {
-  // margin: 10px 0;
-
-  label {
-    display: block;
-  }
-
-  input {
-    // max-width: inherit;
-    height: 20px;
-    margin: 5px;
-    padding: 3px 7px;
-    font-size: 17px;
-  }
-
-
-}
-</style>

@@ -1,0 +1,44 @@
+.button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: large;
+  background-color: $secondary-color;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  
+  &:hover { 
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+    transition: all 0.3s ease-in-out;
+  }
+  
+    &.primary {
+      background-color: $primary-color;
+      color: $primary-font-color;
+      border: $primary-color solid 2px;
+      transition: all 0.3s ease-in-out;
+  
+      &:hover {
+        box-shadow: none;
+        background-color: $secondary-color;
+        color: $primary-font-color;;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  
+    &.secondary {
+      border: solid 2px $third-color;
+      color: $third-color;
+      background-color: none;
+      transition: all 0.3s ease-in-out;
+  
+      &:hover{
+        box-shadow: none;
+        transition: all 0.3s ease-in-out;
+        border: $primary-color solid 2px;
+        color: $primary-color;
+        background-color: $secondary-color;
+      }
+    }
+  }
+  

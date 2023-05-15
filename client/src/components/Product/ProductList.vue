@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">
+  <div class="flex space-between">
       <ProductCard 
         v-for="product in products" 
         :key="product._id" 
@@ -23,12 +23,6 @@ export default {
   components: {
     ProductCard
   },
-  emits: ['add-to-cart'],
+  emits: ['add-to-cart', 'load-cart'],
 }
 </script>
-
-<style lang="scss" scoped>
-.flex {
-  justify-content: space-between;
-}
-</style>

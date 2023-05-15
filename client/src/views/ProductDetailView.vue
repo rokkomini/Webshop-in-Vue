@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="overlay" @click="closeCart"></div>
-    <Cart 
+    <CartDrawer 
       :showCart="showCart" 
       :cart="this.cartStore.cart" 
       :error="this.cartStore.cartError" 
@@ -10,9 +10,10 @@
       @add-one="this.cartStore.addQuantity($event)"
       @delete-cart="this.cartStore.deleteCart"
       @delete-item="this.cartStore.deleteCartItem($event)"
+      @close-cart="closeCart"
     />
       <TopHeader @toggle-cart="toggleCart" :showCartButton="showCartButton" :quantity="this.cartStore.quantity"/>
-    <div class="flex page-wrapper">
+    <div class="flex width-wrapper">
       <ProductDetailsCard v-if="productItem" :product="this.productStore.product" @load-cart="this.cartStore.getCart"/>
     </div>
   </div>
@@ -20,7 +21,7 @@
 
 <script>
 import TopHeader from '../components/Header/TopHeader.vue';
-import Cart from '../components/Cart/Cart.vue';
+import CartDrawer from '../components/Cart/CartDrawer.vue';
 // import ProductCard from '../components/Product/ProductCard.vue';
 import { useProductStore } from '../stores/getProducts';
 import { useCartStore } from '../stores/cart';
@@ -38,8 +39,7 @@ export default {
   },
   components: {
     TopHeader,
-    Cart,
-    // ProductCard,
+    CartDrawer,
     ProductDetailsCard,
   },
   setup() {
@@ -70,9 +70,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.flex.page-wrapper {
-  justify-content: center;
-}
-</style>

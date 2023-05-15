@@ -1,0 +1,22 @@
+//Rules
+@import './rules/breakpoints.scss';
+@import './rules/layout.scss';
+@import './rules/colors.scss';
+
+// Components
+@import './components/cart.scss';
+@import './components/buttons.scss';
+@import './components/header.scss';
+@import './components/footer.scss';
+@import './components/loading-spinner.scss';
+@import './components/product-card.scss';
+@import './components/product-list.scss';
+@import './components/product-details.scss';
+@import './components/order-confirmation.scss';
+@import './components/base.scss';
+
+// Views
+@import './components/checkout-view.scss';
+@import './components/home-view.scss';
+
+

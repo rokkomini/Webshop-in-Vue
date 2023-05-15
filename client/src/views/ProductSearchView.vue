@@ -1,13 +1,14 @@
 <template>
   <div>    
     <div id="overlay" @click="closeCart"></div>
-      <Cart 
+      <CartDrawer 
         :showCart="showCart" 
         :cart="this.cartStore.cart" 
         :error="this.cartStore.cartError" 
         :quantity="this.cartStore.quantity"
         @remove-one="this.cartStore.removeQuantity($event)"
         @add-one="this.cartStore.addQuantity($event)"
+        @close-cart="closeCart"
       />
       <TopHeader 
         @toggle-cart="toggleCart" 
@@ -15,10 +16,14 @@
         :quantity="this.cartStore.quantity"
         @search-query="searchProducts($event)"
       />
-      <div class="page-wrapper">
+      <div class="width-wrapper">
         <h1>Search results for: {{ query }}</h1>
         <div class="flex">
-          <ProductList v-if="query" :products="this.productStore.products" />
+          <ProductList 
+            v-if="query" 
+            :products="this.productStore.products" 
+            @load-cart="this.cartStore.getCart"
+          />
         </div>
       </div>
   </div>
@@ -26,8 +31,7 @@
 
 <script>
 import TopHeader from '../components/Header/TopHeader.vue';
-import Cart from '../components/Cart/Cart.vue';
-// import ProductCard from '../components/Product/ProductCard.vue';
+import CartDrawer from '../components/Cart/CartDrawer.vue';
 import { useProductStore } from '../stores/getProducts';
 import { useCartStore } from '../stores/cart';
 import ProductList from '../components/Product/ProductList.vue';
@@ -45,7 +49,7 @@ export default {
   },
   components: {
     TopHeader,
-    Cart,
+    CartDrawer,
     ProductList,
   },
   setup() {
@@ -77,16 +81,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.page-wrapper {
-  
-  padding-bottom: 30px;
-h1 {
-  color: #808080;
-}
-  .flex {
-    justify-content: center;
-  }
-}
-</style>

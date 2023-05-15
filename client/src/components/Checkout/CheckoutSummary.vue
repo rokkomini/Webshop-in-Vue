@@ -3,7 +3,13 @@
     <p v-if="error">{{ error.message }}</p>
       <div v-if="cart">
         <div v-for="product in cart.products" :key="product.optionId">
-          <CartItem :cartItem="product" @remove-one="removeOne" @add-one="addOne" @delete-item="deleteItem"/>
+          <CartItem 
+            :cartItem="product"
+
+            @remove-one="removeOne" 
+            @add-one="addOne" 
+            @delete-item="deleteItem"
+          />
         </div>
       </div>
 
