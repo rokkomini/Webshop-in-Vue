@@ -46,7 +46,6 @@ getCart();
 </script>
 
 <script>
-
 export default {
   components: {
     TopHeader,

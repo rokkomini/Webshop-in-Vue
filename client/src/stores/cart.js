@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const URL = 'http://localhost:3005/cart';
+const URL = `${import.meta.env.VITE_API_KEY}/cart`
 
 export const useCartStore = defineStore({ 
   id: 'cart',
@@ -61,7 +61,7 @@ export const useCartStore = defineStore({
     },
 
     async addToCart(product) {
-      console.log('store add to cart', product)
+      console.log('store add quantity', URL)
       this.cart = {}
       this.loadingCart = true      
       try {

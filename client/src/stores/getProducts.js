@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const URL = import.meta.env.VUE_BASE_URL || 'http://localhost:3005'
+const URL = `${import.meta.env.VITE_API_KEY}`
 
 export const useProductStore = defineStore({
   id: 'products',
