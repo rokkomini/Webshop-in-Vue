@@ -7,7 +7,7 @@ const productSchema = new Schema({
     description: String,
     options: {
       size: [String],
-      color: [{name: String, colorCode: String, image: { url: String, alt: String }}],
+      color: [{ name: String, colorCode: String, image: { url: String, alt: String }}],
     },
     category: [String],
     brand: String,
@@ -16,7 +16,7 @@ const productSchema = new Schema({
     moreImages: [{ url: String, alt: String }],
     slug: { type: String, unique: true },
 },
-{collection: 'products'}
+{ collection: 'products' }
 );  
 
 const ProductModel = model('Product', productSchema);
