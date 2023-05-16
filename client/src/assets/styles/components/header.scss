@@ -1,15 +1,29 @@
-header {
-  padding: 20px;
+#topHeader {
+  padding: 10px;
   background-color: $primary-color;
   color: $primary-font-color;
+  width: 100%;
 
   span {
     cursor: pointer;
   }
 
-  .left-header {
-    // gap: 20px;
-    // align-items: center;
+  &.sticky {
+    position: fixed;
+    top: 0;
+  }
+  
+  .sticky + .header-content {
+    padding-top: 102px;
+  }
+
+  .header-content { 
+    width: auto;
+
+    @include large-breakpoint {
+      width: 100%;
+    }
+  }
 
     a {
       color: #808080;
@@ -20,7 +34,6 @@ header {
         font-size: 2rem;
       }
     }
-  }
 }
 
 .badge {

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const URL = 'http://localhost:3005/cart';
+const URL = `${import.meta.env.VITE_API_KEY}/cart`
 
 export const useCartStore = defineStore({ 
   id: 'cart',
@@ -61,7 +61,6 @@ export const useCartStore = defineStore({
     },
 
     async addToCart(product) {
-      console.log('store add to cart', product)
       this.cart = {}
       this.loadingCart = true      
       try {
@@ -100,7 +99,7 @@ export const useCartStore = defineStore({
         await fetch(`${URL}/delete-item`, {
           method: 'DELETE',
           headers: {'Content-Type': 'application/json;charset=utf-8'},
-          body: JSON.stringify({ cartItem })
+          body: JSON.stringify( cartItem )
         })
         this.getCart()
       } catch (error) {

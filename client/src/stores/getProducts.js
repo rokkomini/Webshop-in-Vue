@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const URL = import.meta.env.VUE_BASE_URL || 'http://localhost:3005'
+const URL = `${import.meta.env.VITE_API_KEY}`
 
 export const useProductStore = defineStore({
   id: 'products',
@@ -32,11 +32,9 @@ export const useProductStore = defineStore({
       try {
         this.product = await fetch(`${URL}/product/${slug}`).then((res) => res.json())
       } catch (error) {
-        // this.productError = error
-        console.log('error', error)
+        this.productError = error
       } finally {
         this.loadingProducts = false
-        console.log('finally')
       }
     },
 

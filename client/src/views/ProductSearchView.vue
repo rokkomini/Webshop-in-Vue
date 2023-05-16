@@ -22,7 +22,7 @@
           <ProductList 
             v-if="query" 
             :products="this.productStore.products" 
-            @load-cart="this.cartStore.getCart"
+            @add-to-cart="this.cartStore.addToCart($event)"
           />
         </div>
       </div>

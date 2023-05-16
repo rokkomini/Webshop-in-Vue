@@ -43,8 +43,6 @@
 </template>
 
 <script>
-// const URL = 'http://localhost:3005'
-
 export default {
   name: 'ProductCard',
   props: {
@@ -84,20 +82,6 @@ export default {
       }
 
       this.$emit('add-to-cart', newAdd)
-
-      // try {
-      //   const response = await fetch(`${URL}/cart/add-to-cart`, {
-      //     method: 'POST',
-      //     headers: { 'Content-Type': 'application/json' },
-      //     body: JSON.stringify(newAdd)
-      //   })
-      //   await response.json()
-      // } catch (error) {
-      //   console.log('error')
-      // } finally {
-      //   this.loadingCart = false
-      // }
-      // this.$emit('load-cart')
     }
   },
 }

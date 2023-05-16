@@ -7,7 +7,7 @@ const productSchema = new Schema({
     description: String,
     options: {
       size: [String],
-      color: [{name: String, colorCode: String, image: { url: String, alt: String }}],
+      color: [{ name: String, colorCode: String, image: { url: String, alt: String }}],
     },
     category: [String],
     brand: String,
@@ -16,7 +16,7 @@ const productSchema = new Schema({
     moreImages: [{ url: String, alt: String }],
     slug: { type: String, unique: true },
 },
-{collection: 'products'}
+{ collection: 'products' }
 );  
 
 const ProductModel = model('Product', productSchema);
@@ -41,11 +41,9 @@ const saveNewProduct = async (product) => {
 }
 
 const searchProducts = async (query) => {
-  console.log('query in model: ', query) 
   return await ProductModel.find({
     $or: [
       { name: RegExp(query, "i") },
-      // { name: { $regex: `/${query}/gi` } },
       { category: { $elemMatch: { $eq: query }} },
       { brand: RegExp(query, "i") }
     ]

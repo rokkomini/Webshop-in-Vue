@@ -14,7 +14,11 @@
     />
       <TopHeader @toggle-cart="toggleCart" :showCartButton="showCartButton" :quantity="this.cartStore.quantity"/>
     <div class="flex width-wrapper">
-      <ProductDetailsCard v-if="productItem" :product="this.productStore.product" @load-cart="this.cartStore.getCart"/>
+      <ProductDetailsCard 
+        v-if="productItem" 
+        :product="this.productStore.product" 
+        @add-to-cart="this.cartStore.addToCart($event)"
+      />
     </div>
   </div>
 </template>
@@ -66,7 +70,6 @@ export default {
     this.cartStore.getCart();
     this.productStore.getProduct(this.slug);
     return this.productItem = this.productStore.product;
-
   },
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="yellow-wrapper">
+  <div class="pink-wrapper customer-box">
     Delivery address:
     <p>{{ customer.name }}</p>
     <p>{{ customer.address}} </p>

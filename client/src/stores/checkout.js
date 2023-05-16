@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const URL = 'http://localhost:3005/checkout';
+const URL = `${import.meta.env.VITE_API_KEY}/checkout`
 
 export const useCheckoutStore = defineStore({ 
   id: 'checkout',
