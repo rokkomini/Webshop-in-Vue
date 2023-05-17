@@ -34,7 +34,7 @@ const findCartItem = async (item) => {
   return await CartModel.find(item);
 }
 
-const saveNewCart = async (cart) => { 
+const saveNewCart = async (cart) => {
   const newCart = new CartModel(cart);
   return await newCart.save();
 }
