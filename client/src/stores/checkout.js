@@ -37,10 +37,6 @@ export const useCheckoutStore = defineStore({
         })
         await response
         this.getOrder(customer.email)
-
-        console.log('save order', this.order)
-        // // .then((res) => res.json())
-        // this.getOrder(customer.email)
       } catch (error) {
         this.orderError = error
       } finally {

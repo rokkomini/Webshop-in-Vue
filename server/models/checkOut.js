@@ -20,7 +20,6 @@ const checkOutSchema = new Schema({
 const CheckOutModel = model('CheckOut', checkOutSchema);
 
 const loadOrderFromDB = async (customerEmail) => {
-  console.log('load order from db', customerEmail);
   const latestOrder = await CheckOutModel.find({ 'customer.email': customerEmail}).sort({ field: 'asc', _id: -1 }).limit(1).exec();
   return latestOrder;
 }

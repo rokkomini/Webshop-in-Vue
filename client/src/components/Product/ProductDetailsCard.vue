@@ -2,7 +2,7 @@
   <div class="flex product-details-wrapper">
     <h1 class="show-medium"> {{ product.name }} </h1>
     <h1 class="show-small"> {{ product.name }} </h1>
-    <div class="product-img" v-if="!selectedOption">
+    <div class="product-img" v-if="!selectedOption || product.options.size.length > 0">
       <img :src="product.mainImage?.url" :alt="product.mainImage?.alt">
     </div>
 
@@ -33,14 +33,15 @@
       <div v-if="product.options?.size.length > 0">
         <h4>Choose size</h4>
         <div class="flex-row radio-options">
-          <div v-for="option in product.options.color" v-bind:key="option._id">
+          <div v-for="option in product.options.size" v-bind:key="option.id">
               <label :for="option._id">
                 <input type="radio" :id="option._id" :value="option._id" v-model="selectedOption" />
-                <h2>option.size</h2>
+                <h5>{{ option.name }}</h5>
               </label>
           </div>
         </div>
       </div>
+
       <button class="button primary" @click="addToCart">Buy</button>
     </div>
   </div>
