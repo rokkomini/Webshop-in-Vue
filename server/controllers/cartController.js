@@ -18,13 +18,17 @@ const saveCart = async(productId, optionId) => {
     const price = product.price;
 
     var option = undefined;
-    if (product.options.color.length > 0) {
-      option = product.options.color.find((option) => option.id === optionId);
-    } 
+    var optionImg = undefined;
 
     if (product.options.size.length > 0) { 
       option = product.options.size.find((option) => option.id === optionId);
+      optionImg = product.mainImage
     }
+
+    if (product.options.color.length > 0) {
+      option = product.options.color.find((option) => option.id === optionId);
+      optionImg = {url: option?.image.url, alt: option?.image.alt}
+    } 
     
     if (cart) {
       let productIndex = cart.products.findIndex((p) => p.productId === product.id && p.optionId === optionId);
@@ -37,7 +41,7 @@ const saveCart = async(productId, optionId) => {
           productId: productId,
           optionId: optionId,
           productName: product.name + ' - ' + option.name,
-          image: {url: option.image.url, alt: option.image.alt},
+          image: optionImg,
           quantity: 1,
           price: price,
         });
@@ -50,7 +54,7 @@ const saveCart = async(productId, optionId) => {
           productId: productId,
           optionId: optionId,
           productName: product.name + ' - ' + option.name,
-          image: {url: option.image.url, alt: option.image.alt},
+          image: optionImg,
           quantity: 1,
           price: product.price
         }],

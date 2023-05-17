@@ -22,7 +22,6 @@ const getSearchResults = async(query) => {
   if (searchResults.length < 1) {
     throw new Error('No matching products found');
   }
-  console.log('searchResults in controller: ', searchResults.length)
   return searchResults;
 }
 
