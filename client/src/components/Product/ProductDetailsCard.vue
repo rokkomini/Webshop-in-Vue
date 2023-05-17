@@ -35,8 +35,8 @@
         <div class="flex-row radio-options">
           <div v-for="option in product.options.size" v-bind:key="option.id">
               <label :for="option._id">
-                <input type="radio" :id="option._id" :value="option" v-model="selectedOption" />
-                <h5>{{ option }}</h5>
+                <input type="radio" :id="option._id" :value="option._id" v-model="selectedOption" />
+                <h5>{{ option.name }}</h5>
               </label>
           </div>
         </div>
