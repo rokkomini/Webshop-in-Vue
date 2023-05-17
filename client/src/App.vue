@@ -15,10 +15,3 @@ export default {
   },
 }
 </script>
-
-<style>
-html, body {
-  font-family: 'Lato', sans-serif;
-  /* font-family: 'Trispace', sans-serif; */
-}
-</style>

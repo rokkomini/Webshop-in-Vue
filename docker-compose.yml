@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  server:
+    build:
+      dockerfile: Dockerfile.server
+    ports:
+      - "3005:3005"
+    environment:
+      - MONGODB_URL = mongodb://localhost:27017/webshop
+  
+  client:
+    build:
+      dockerfile: Dockerfile.client
+      args:
+        REACT_APP_URL: http://127.0.0.1:5173/
+    ports:
+      - "5173:5173"
+  db:
+    image: mongo:6.0.2
+    ports:
+      - "27017:27017"
+    container_name: db_plant_shop
+    volumes:
+      - /data/db
+      - ./initdb.js:/docker-entrypoint-initdb.d/initdb.js
+    environment:
+      - MONGO_INITDB_DATABASE=plantshop
