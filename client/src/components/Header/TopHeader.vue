@@ -9,7 +9,7 @@
         </div>
       </div>
       <div>
-        <h1>ITSY BITSY</h1>
+        <h1><RouterLink to="/">ITSY BITSY</RouterLink></h1>
       </div>
       <div class="flex">
         <div v-show="showCartButton">

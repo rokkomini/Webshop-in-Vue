@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  server:
+    build:
+      dockerfile: Dockerfile.server
+      args:
+        MONGODB_URL: mongodb://db:27017/webshop
+    ports:
+      - "3005:3005"
+  client:
+    build:
+      dockerfile: Dockerfile.client
+      args:
+        VITE_API_KEY: http://localhost:3005
+    ports:
+      - "8080:8080"
+    # entrypoint: /bin/sh
+  db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    container_name: db_vue_webshop
+    volumes:
+      - /data/db
+      - ./initdb.js:/docker-entrypoint-initdb.d/initdb.js
+    environment:
+      - MONGO_INITDB_DATABASE=webshop

@@ -1,0 +1,23 @@
+FROM node:16-alpine
+WORKDIR /usr/src/app
+
+COPY ./package*.json ./
+COPY ./client/package*.json ./client/
+
+
+RUN npm ci -w ./client
+
+COPY ./client ./client
+
+ARG VITE_API_KEY 
+ENV VITE_APP_BASE_URL=${VITE_API_KEY}
+
+# RUN npm run build -w ./client/
+EXPOSE 8080
+
+WORKDIR /usr/src/app/client
+
+# CMD [ "npx", "serve", "-s", "client/dist" ]
+# CMD [ "http-server", "dist" ]
+
+CMD [ "npx", "vite", "--host" ]

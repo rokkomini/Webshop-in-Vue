@@ -15,7 +15,8 @@
     <TopHeader 
       @toggle-cart="toggleCart" 
       :showCartButton="showCartButton" 
-      :quantity="quantity"/>
+      :quantity="quantity"
+    />
     <StartHeroVue />
     <div class="width-wrapper home-view">
       <p v-if="productError">{{ productError.message }}</p>
@@ -34,7 +35,6 @@ import ProductList from '../components/Product/ProductList.vue';
 import { storeToRefs } from 'pinia'
 import { useProductStore } from '../stores/getProducts';
 import { useCartStore } from '../stores/cart';
-
 
 const { products, productError } = storeToRefs(useProductStore());
 const { cart, quantity, cartError } = storeToRefs(useCartStore());

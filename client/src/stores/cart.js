@@ -36,7 +36,7 @@ export const useCartStore = defineStore({
           headers: {'Content-Type': 'application/json;charset=utf-8'},
           body: JSON.stringify({ cartItem }) 
         })
-        this.getCart()               
+        await this.getCart()
       } catch (error) {
         this.cartError = error
       } finally {
@@ -99,7 +99,7 @@ export const useCartStore = defineStore({
         await fetch(`${URL}/delete-item`, {
           method: 'DELETE',
           headers: {'Content-Type': 'application/json;charset=utf-8'},
-          body: JSON.stringify( cartItem )
+          body: JSON.stringify({ cartItem })
         })
         this.getCart()
       } catch (error) {

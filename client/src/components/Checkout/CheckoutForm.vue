@@ -46,10 +46,10 @@
         Choose form of payment: {{ payment }}
       <div class="flex-row">
         <input type="radio" id="card" value="card" v-model="payment" />
-        <img src="../../assets/credit-card-svgrepo-com.svg" alt="card-icon" class="svg-icon">
+        <img src="/src/assets/svg/credit-card-svgrepo-com.svg" alt="card-icon" class="svg-icon">
 
         <input type="radio" id="klarma" value="klarma" v-model="payment" />
-        <img src="../../assets/Klarna marketing badge (pink rgb.svg).svg" alt="Klarna-logo" class="svg-icon">
+        <img src="/src/assets/svg/klarna-marketing-badge-(pink-rgb.svg).svg" alt="Klarna-logo" class="svg-icon">
       </div>
       <div class="flex form-buttons">
         <input class="button primary" type="submit" value="Proceed and pay">
