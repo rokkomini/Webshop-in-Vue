@@ -7,7 +7,7 @@ This is a webshop created with Vue3 and Vite, Node and Express with the databse 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/rokkomini/Webshop-in-Vue.git"
+git clone https://github.com/rokkomini/Webshop-in-Vue.git
 ```
 
 2. Use command:
