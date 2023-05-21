@@ -3,25 +3,25 @@ services:
   server:
     build:
       dockerfile: Dockerfile.server
+      args:
+        MONGODB_URL: mongodb://db:27017/webshop
     ports:
       - "3005:3005"
-    environment:
-      - MONGODB_URL = mongodb://localhost:27017/webshop
-  
   client:
     build:
       dockerfile: Dockerfile.client
       args:
-        REACT_APP_URL: http://127.0.0.1:5173/
+        VITE_API_KEY: http://localhost:3005
     ports:
-      - "5173:5173"
+      - "8080:8080"
+    # entrypoint: /bin/sh
   db:
-    image: mongo:6.0.2
+    image: mongo:latest
     ports:
       - "27017:27017"
-    container_name: db_plant_shop
+    container_name: db_vue_webshop
     volumes:
       - /data/db
       - ./initdb.js:/docker-entrypoint-initdb.d/initdb.js
     environment:
-      - MONGO_INITDB_DATABASE=plantshop
+      - MONGO_INITDB_DATABASE=webshop

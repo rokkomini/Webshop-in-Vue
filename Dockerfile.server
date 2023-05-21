@@ -2,10 +2,17 @@ FROM node:16-alpine
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-COPY ./server/package*.json ./packages/server/
+COPY ./server/package*.json ./server/
 
 RUN npm ci -w ./server
 
+COPY ./server ./server
+
+ARG MONGODB_URL
+ENV MONGODB_URL=${MONGODB_URL}
+
 EXPOSE 3005
 
-CMD ["npm", "run", "server"]
+WORKDIR /usr/src/app/server
+
+CMD ["node", "index.js"]

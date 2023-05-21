@@ -25,7 +25,7 @@
         
         <select v-if="product.options.size.length > 0" @change="updateOption($event)">
           <option disabled selected>Please select one</option>
-          <option v-for="option in product.options.size" :value="option._id" v-bind:key="option.id" :option="option.id">
+          <option v-for="option in product.options.size" :value="option._id" v-bind:key="option.id">
             {{ option.name }}
           </option>
         </select>
@@ -73,7 +73,7 @@ export default {
     updateOption(event) {
       return this.selectedOption = event.target.value;
     },
-    async addToCart(e) {
+    addToCart(e) {
       e.preventDefault();
       if (!this.selectedOption) {
         alert('Please select')
