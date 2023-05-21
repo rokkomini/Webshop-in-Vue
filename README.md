@@ -25,24 +25,23 @@ docker compose up --build
 git clone https://github.com/rokkomini/Webshop-in-Vue.git"
 ```
 2. Install dependencies
-3. 
 ```bash
 npm install
 ```
-1. Create .env file in server
+3. Create .env file in server
 
 ```bash
 PORT = your chosen port
 MONGODB_URL = path to Mongodb
 ```
 
-2. Create .env file in client
+4. Create .env file in client
 
 ```bash
 VITE_API_KEY = path to server
 ```
 
-3. Docker
+5. Docker
    1. Create a catalogue on your harddrive to enable Mongo to store its data
    2. Create and start a MongoDB-container
   ```bash
@@ -52,11 +51,11 @@ VITE_API_KEY = path to server
   ```bash
   docker ps
   ```
-4. Start server 
+6. Start server 
   ```bash
   npm run server
   ```
-5. Start client
+7. Start client
   ```bash
   npm run client
   ```
