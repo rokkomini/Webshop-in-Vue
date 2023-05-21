@@ -42,13 +42,13 @@ VITE_API_KEY = path to server
 ```
 
 5. Docker
-   1. Create a catalogue on your harddrive to enable Mongo to store its data
-   2. Create and start a MongoDB-container
-      1.   ```bash
-  docker run --name mongodb-tutorial -v <your-data-catalogue>:/data/db  -p 27017:27017 -d mongo 
+- Create a catalogue on your harddrive to enable Mongo to store its data
+- Create and start a MongoDB-container
+```bash
+docker run --name mongodb-tutorial -v <your-data-catalogue>:/data/db  -p 27017:27017 -d mongo 
   ```
-   3. Check to see if docker container is started
-      1. ```bash
+- Check to see if docker container is started
+ ```bash
   docker ps
   ```
   
