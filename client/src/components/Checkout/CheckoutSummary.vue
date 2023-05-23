@@ -5,7 +5,6 @@
         <div v-for="product in cart.products" :key="product.optionId">
           <CartItem 
             :cartItem="product"
-
             @remove-one="removeOne" 
             @add-one="addOne" 
             @delete-item="deleteItem"
@@ -20,8 +19,7 @@
 
       <div v-if="quantity < 1">
         No items in cart
-      </div>
-      
+      </div>      
   </div>
 </template>
 

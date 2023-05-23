@@ -1,5 +1,5 @@
 <template>
-  <header class="flex header" id="topHeader">
+  <header class="flex header topHeader">
     <div class="flex-row space-between width-wrapper header-content">
       <div class="flex-row left-header">
         <RouterLink to="/"><font-awesome-icon icon="fa-solid fa-house" /></RouterLink>
@@ -45,19 +45,5 @@ export default {
     }
   },
   emits: ['toggle-cart'],
-  mounted() {
-    window.onscroll = function () { myFunction() };
-
-    var header = document.getElementById("topHeader");
-    var sticky = header.offsetTop;
-
-    function myFunction() {
-      if (window.pageYOffset > sticky) {
-        header.classList.add("sticky");
-      } else {
-        header.classList.remove("sticky");
-      }
-    }
-  }
 }
 </script>

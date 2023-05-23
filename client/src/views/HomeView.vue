@@ -30,7 +30,7 @@
 <script setup>
 import TopHeader from '../components/Header/TopHeader.vue';
 import CartDrawer from '../components/Cart/CartDrawer.vue';
-import StartHeroVue from '../components/StartHero.vue';
+import StartHeroVue from '../components/Header/StartHero.vue';
 import ProductList from '../components/Product/ProductList.vue';
 import { storeToRefs } from 'pinia'
 import { useProductStore } from '../stores/getProducts';
