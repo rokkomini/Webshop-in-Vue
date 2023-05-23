@@ -1,6 +1,6 @@
 # Webshop
 
-This is a webshop created with Vue3 and Vite, Node and Express with the databse set in MongoDB.
+This is a webshop created with Vue3 and Vite, Node and Express with the database set in MongoDB.
 
 ## Run project with docker
 
