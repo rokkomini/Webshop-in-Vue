@@ -14,7 +14,6 @@ services:
         VITE_API_KEY: http://localhost:3005
     ports:
       - "8080:8080"
-    # entrypoint: /bin/sh
   db:
     image: mongo:latest
     ports:

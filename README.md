@@ -2,7 +2,7 @@
 
 This is a webshop created with Vue3 and Vite, Node and Express with the database set in MongoDB.
 
-## Run project with docker
+## Run project with docker (recommended)
 
 1. Clone the repository:
 
