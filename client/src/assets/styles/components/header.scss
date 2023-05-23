@@ -1,20 +1,12 @@
-#topHeader {
+.topHeader {
   padding: 10px;
   background-color: $primary-color;
   color: $primary-font-color;
-  width: 100%;
+  position: sticky;
+  top: 0;
 
   span {
     cursor: pointer;
-  }
-
-  &.sticky {
-    position: fixed;
-    top: 0;
-  }
-  
-  .sticky + .header-content {
-    padding-top: 102px;
   }
 
   .header-content { 
@@ -25,15 +17,14 @@
     }
   }
 
-    a {
-      color: #808080;
-      text-decoration: none;
-      font-size: 1.5rem;
-
-      @include large-breakpoint {
-        font-size: 2rem;
-      }
+  a {
+    color: #808080;
+    text-decoration: none;
+    font-size: 1.5rem;
+    @include large-breakpoint {
+      font-size: 2rem;
     }
+  }
 }
 
 .badge {

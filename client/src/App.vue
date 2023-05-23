@@ -6,8 +6,7 @@
 </template>
 
 <script>
-// import { RouterLink, RouterView } from 'vue-router'
-import ShopFooter from './components/ShopFooter.vue';
+import ShopFooter from './components/footer/ShopFooter.vue';
 
 export default { 
   components: {

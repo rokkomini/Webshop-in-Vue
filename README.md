@@ -16,6 +16,8 @@ git clone https://github.com/rokkomini/Webshop-in-Vue.git
 docker compose up --build
 ```
 
+3. App runs on port 8080
+
 ----
 ## To run manually
 

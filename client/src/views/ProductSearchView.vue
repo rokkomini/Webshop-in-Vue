@@ -8,6 +8,8 @@
         :quantity="this.cartStore.quantity"
         @remove-one="this.cartStore.removeQuantity($event)"
         @add-one="this.cartStore.addQuantity($event)"
+        @delete-cart="this.cartStore.deleteCart"
+        @delete-item="this.cartStore.deleteCartItem($event)"
         @close-cart="closeCart"
       />
       <TopHeader 
@@ -35,6 +37,7 @@ import CartDrawer from '../components/Cart/CartDrawer.vue';
 import { useProductStore } from '../stores/getProducts';
 import { useCartStore } from '../stores/cart';
 import ProductList from '../components/Product/ProductList.vue';
+
 export default {
   name: 'ProductSearch',
   data() {

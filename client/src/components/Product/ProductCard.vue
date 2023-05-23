@@ -21,8 +21,8 @@
         </p>
         <p class="brand">{{ product.brand }}</p>
       </div>
-      <div class="flex column">
-        
+      
+      <div class="flex column">        
         <select v-if="product.options.size.length > 0" @change="updateOption($event)">
           <option disabled selected>Please select one</option>
           <option v-for="option in product.options.size" :value="option._id" v-bind:key="option.id">
@@ -89,5 +89,4 @@ export default {
     }
   },
 }
-
 </script>

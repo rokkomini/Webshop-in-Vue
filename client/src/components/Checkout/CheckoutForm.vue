@@ -105,7 +105,6 @@ export default {
       this.city = ''
       this.country = ''
       this.payment = '' 
-    
     }
   }
 }

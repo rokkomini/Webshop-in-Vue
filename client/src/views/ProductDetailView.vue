@@ -26,7 +26,6 @@
 <script>
 import TopHeader from '../components/Header/TopHeader.vue';
 import CartDrawer from '../components/Cart/CartDrawer.vue';
-// import ProductCard from '../components/Product/ProductCard.vue';
 import { useProductStore } from '../stores/getProducts';
 import { useCartStore } from '../stores/cart';
 import ProductDetailsCard from '../components/Product/ProductDetailsCard.vue';
