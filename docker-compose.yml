@@ -3,10 +3,11 @@ services:
   server:
     build:
       dockerfile: Dockerfile.server
-      args:
-        MONGODB_URL: mongodb://db:27017/webshop
     ports:
       - "3005:3005"
+    environment:
+      - MONGODB_URL=mongodb://db:27017/webshop
+
   client:
     build:
       dockerfile: Dockerfile.client
